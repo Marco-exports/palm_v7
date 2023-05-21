@@ -3,7 +3,7 @@
 #### These things are run when an Openbox X Session is started.
 #### You may place a similar script in:  (to run user-specific things)
 
-$HOME/.config/openbox/autostart
+$HOME/.config/openbox/autostart ...
 
 #### If you want to use GNOME config tools...
 
