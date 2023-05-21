@@ -1,0 +1,10 @@
+.appReloader {
+    float: left;
+    width:25px;
+    height:25px;
+    margin-top: 1px;
+    padding-left: 10px;
+}
+
+.AppReload {fill: var(--AppReloadsF);}
+.AppReload {stroke: var(--AppReloadsS);}

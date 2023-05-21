@@ -1,0 +1,35 @@
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+    transition: all 750ms !important;
+    transition-delay: 1ms !important;
+}
+
+html {
+    --background-color: #141e6e;
+    --border: #fff;
+    --primaryText: #fff;
+    --topTabs: #131324;
+    --fans: #e9f1f6;
+    --fans_red: #fa00d4;
+    --footerText: #eeeee7;
+    --QR_icon-backgound: #791f25;
+    --QR_icons: #beb391;
+    --AppReloadsF: #084299;
+    --AppReloadsS: #0a5579;
+}
+
+html[data-theme="night"] {
+    --background-color: #030b3c;
+    --border: #e91c4c;
+    --primaryText: #6f79b7;
+    --topTabs: #3b3b94;
+    --fans: #4365b8;
+    --fans_red: #cb21ad;
+    --footerText: #8165cd;
+    --QR_icon-backgound: #2c2488;
+    --QR_icons: #60699b;
+    --AppReloadsF: #09377e;
+    --AppReloadsS: #051c58;
+}

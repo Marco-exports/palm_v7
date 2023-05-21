@@ -1,0 +1,124 @@
+body {
+    margin-bottom: 24px;
+}
+.tab_configuration{
+    font-size: 18px;
+}
+.tabs-one {
+    touch-action: none;
+    overflow: hidden;
+    max-width:790px;
+    max-height:470px;
+}
+.Modal {
+    touch-action: none;
+    overflow: hidden;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    right: 240px;
+    bottom: 300px;
+    background-color: white;
+}
+.Overlay {
+    touch-action: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: white;
+}
+
+.right {
+    float: right;
+    background-color: #011f40; /* Green */
+    border-radius: 26px;
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border: 1px solid #175075;
+}
+.right:hover {
+    background-color: #072f66;
+    color: #f0f7fd;
+}
+
+.modal {
+    font-size: 20px;
+    width: 420px;
+}
+.modal > .header {
+    width: 100%;
+    border-bottom: 2px solid gray;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px;
+    background: #f6f682;
+}
+.modal > .content {
+    width: 100%;
+    padding: 0px 0px;
+    text-align: center;
+    font-size: 18px;
+    background: #f1f1bf;
+}
+.div1 {
+    width: 400px;
+    height: 50px;
+    border: 1px solid #dbdbf1;
+    font-size: 30px;
+}
+.modal > .actions {
+    width: 100%;
+    padding: 20px 0px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+    background: #f1f1bf;
+}
+.modal > .pop_button {
+    padding: 15px 10px;
+    text-align: center;
+    width: 100%;
+}
+.modal > .pop_buttonx {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+}
+.modal > .close_btn {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 1px 0px;
+    line-height: 20px;
+    right: 4px;
+    top: 5px;
+    font-size: 40px;
+    border-radius: 1px;
+    border: 2px solid #1256de;
+}
+.rowC{
+    display:flex;
+    flex-direction:row;
+}
+.fan_auto{
+    width:45px;
+    height:45px;
+    margin-right: 25px;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.button_fans{float: right;}
+.scroller{overflow: scroll;}

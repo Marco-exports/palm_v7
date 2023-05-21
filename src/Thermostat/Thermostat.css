@@ -1,0 +1,54 @@
+.arrow_up{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: var(--primaryText);
+}
+.arrow_down{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: var(--primaryText);
+}
+.temp_setter{
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: var(--primaryText);
+}
+.temp_small{
+    font-size: 30px;
+    color: var(--primaryText);
+}
+
+img {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+
+.thermo-indoor-grid-C {
+    display: grid;
+    grid-template-columns: repeat(2, 10px);
+    grid-gap: 1px;
+    margin-left: 74px;
+    color: var(--primaryText);
+}
+.thermo-indoor-span-row{
+    grid-row: span 2/auto;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--primaryText);
+}
+.thermo-indoor-5{
+    margin-left: 50px;
+    margin-top: 26px;
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--primaryText);
+}
+.thermo-temp_small{
+    margin-left: 5px;
+    font-size: 30px;
+}
