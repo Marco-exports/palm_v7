@@ -8,7 +8,7 @@ if (process.platform==='linux') {
    pigpio.configureClock(5, pigpio.CLOCK_PWM)   // lowest CPU usage x
 }
 console.log(' Node -v : ' + process.version)     // node -v == v12.22.4
-const config_files = require('../../../../Desktop/untitled folder/server/config')   // ROOM --> config
+const config_files = require('./config')   // ROOM --> config
 console.log(config_files)     //  -->  "ROOM_Id : CFG_PC601_STUDY"
 const port = process.env.PORT || 8080
 
@@ -27,13 +27,13 @@ const io = require('socket.io')(server, {pingTimeout: 60000 }) // io server
 server.listen(port,() => console.log(` Node on port :  ${port}`))
 
 const { createProxyMiddleware } = require('http-proxy-middleware')
-const pigpio = require("pigpio");
+// const pigpio = require("pigpio");
 module.exports = function(app) {app.use('/', createProxyMiddleware({target: 'http://localhost:3000', changeOrigin: true }))}
 
 app.use('/', express.static( '../build'))
-app.use('/fans', require('../../../../Desktop/untitled folder/server/routes/tab_fans').router)    // TAB:  config fan speeds
+app.use('/fans', require('./routes/tab_fans').router)    // TAB:  config fan speeds
 // app.use('/backlight', require('./routes/backlight').router) // obsolete
-app.use('/windows', require('../../../../Desktop/untitled folder/server/routes/tab_windows').router)
+app.use('/windows', require('./routes/tab_windows').router)
 
 app.get('/XXXXX', function (req, res) { res.send( ROOM.room_ID )})
 app.get('/ROOM_WIN', function (req, res) { res.send( ROOM_WIN )})
@@ -42,15 +42,15 @@ app.get('/QRQRQ', function (req, res) {
    console.log("QRQRQ : " + ROOM.room_ID)}
 )
 
-require('../../../../Desktop/untitled folder/server/modules/gpioBankRead')(io)
-require('../../../../Desktop/untitled folder/server/modules/dark_sky')(io)
-require('../../../../Desktop/untitled folder/server/modules/fan_speed')(io)
-require('../../../../Desktop/untitled folder/server/modules/temperature')(io)
-require('../../../../Desktop/untitled folder/server/modules/indoor')(io)
+require('./modules/gpioBankRead')(io)
+require('./modules/dark_sky')(io)
+require('./modules/fan_speed')(io)
+require('./modules/temperature')(io)
+require('./modules/indoor')(io)
 // require('./modules/window')(io)     // send ROOM_WIN
-require('../../../../Desktop/untitled folder/server/modules/motion_PIR')(io)
-require('../../../../Desktop/untitled folder/server/modules/one_Wire_DS18B20')(io)
-require('../../../../Desktop/untitled folder/server/modules/backlight')(io)
+require('./modules/motion_PIR')(io)
+require('./modules/one_Wire_DS18B20')(io)
+require('./modules/backlight')(io)
 
 console.log(' Memory usage: ')
 console.log( process.memoryUsage() )
