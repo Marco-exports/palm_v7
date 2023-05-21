@@ -1,25 +1,98 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import AppReloader from "./Utilities/AppReload"
+import Thermostat from './Thermostat/Thermostat'
+import Outdoor from './Outdoor/Outdoor'
+import Indoor from './Indoor/Indoor'
+import ConfigRoom from "./Utilities/ConfigRoom"
+import MotionPIR from "./MotionPIR/MotionPIR"
+import DateTime from './Utilities/DateTimeMoment'
+import DayNight from './Utilities/DayNight'
+import TempFC from './Utilities/Temperature_F_C'
+import QRcode from './Modal/QR_PopUp'
+import OneWireTemp from './Utilities/One_Wire'
+import Backlight from "./Utilities/Backlight"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+   constructor(props) {
+      super(props)
+      this.state = { theme: "day", temp: "F" }
+      this.toggleTemp = this.toggleTemp.bind(this)
+      this.toggleTheme = this.toggleTheme.bind(this)
+   }
+
+   toggleTemp() {
+      const temp = this.state.temp === "F" ? "C" : "F"
+      this.setState({ temp })
+      //console.log('TEMP: ' + temp)
+      document.documentElement.setAttribute("data-temp", temp)
+   }
+
+   toggleTheme() {
+      const theme = this.state.theme === "day" ? "night" : "day"
+      this.setState({ theme })
+      console.log('Day_Night: ' + theme)
+      document.documentElement.classList.add("color-theme-in-transition")
+      document.documentElement.setAttribute("data-theme", theme)
+      window.setTimeout(() => {
+         document.documentElement.classList.remove("color-theme-in-transition")},1000)
+   }
+
+   render() {
+      return (
+         <React.Fragment>
+            <div className="App">
+               <div className="grid-container">
+                  <div className="touchscreen">
+                     <div className="top-tab">
+                        <div className="tab1">
+                           <QRcode/>
+                           <DayNight toggleTheme={this.toggleTheme} Day={this.state.theme}/>
+                           <TempFC toggleTemp={this.toggleTemp } F={this.state.temp}/>
+                        </div>
+                        <div className="tab2">tab_2</div>
+                        <div className="tab3">tab_3</div>
+                        <div className="tab4">tab_4</div>
+                     </div>
+                     <div className="main">
+                        <div className="outdoor">
+                           <div className="out_date">
+                              <b><DateTime format={"ddd, MMM Do YYYY"}/></b>
+                           </div>
+                           <div className="out_time">
+                              <b><DateTime format={" h:mm a"}/></b>
+                           </div>
+                           <div className="out_text">OUTDOOR</div>
+                           <div className="h_line"> </div>
+
+                           <Outdoor temp_F_C = {this.state.temp}/>
+
+                           <div className="status">STATUS</div>
+                           <div className="h_line"> </div>
+                        </div>
+                        <div>
+                           <Indoor temp_F_C={this.state.temp}/>
+                        </div>
+                        <div className="set_temp">
+                           <Thermostat day={this.state.theme} temp_F_C={this.state.temp}/>
+                        </div>
+                     </div>
+                     <div className="footer">
+                        <div className="footer_left">
+                           <ConfigRoom/>
+                           <MotionPIR/>
+                           <OneWireTemp/>
+                           <Backlight/>
+                           <AppReloader/>
+                        </div>
+                        <div className="footer_right">footer_right...</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </React.Fragment>
+      )
+   }
 }
+export default App
 
-export default App;
+//  <Indoor day={this.state.temp}/> ...contains: <Windows />.
