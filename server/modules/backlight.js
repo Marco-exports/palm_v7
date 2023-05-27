@@ -28,4 +28,4 @@ module.exports = function(io) {
 
 //backlight.getBrightness()
 //backlight.setBrightness(value) // The screen goes Off at <= 9 brightness value
-//backlight.getMaxBrightness()
+//backlight.getMaxBrightness() ...
