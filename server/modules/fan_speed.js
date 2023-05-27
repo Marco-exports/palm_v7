@@ -10,7 +10,6 @@ module.exports = (io) => {
     }
 
     io.on("connection", socket => {
-        // socket.on("disconnect", () => { console.log(`drop < FAN_SPEED >`)})
 
         socket.on('getFan', function () {
             io.emit("Fan_API", ROOM_ID_STATx.fanSet )     // EMIT --> send "fanSet" to app
@@ -38,4 +37,3 @@ module.exports = (io) => {
         } else {console.log(" Darwin : NO FANs")}
     }
 }
-

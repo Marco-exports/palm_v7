@@ -12,7 +12,7 @@ const config_files = require('./config')   // ROOM --> config
 console.log(config_files)     //  -->  "ROOM_Id : CFG_PC601_STUDY"
 const port = process.env.PORT || 8080
 
-// **** **** **** **** **** **** v6 **** **** **** **** **** **** **** //
+// **** **** **** **** **** **** v7 **** **** **** **** **** **** **** //
 
 const http = require("http")
 const bodyParser = require("body-parser")
@@ -20,7 +20,7 @@ const express = require("express")
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-var cors = require('cors')
+const cors = require('cors')
 app.use(cors())
 const server = http.createServer(app)    // HTTP server
 const io = require('socket.io')(server, {pingTimeout: 60000 }) // io server
