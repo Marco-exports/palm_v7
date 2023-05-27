@@ -9,7 +9,7 @@
 
   https://raspberrypi.stackexchange.com/questions/tagged/chromium?tab=newest&page=4&pagesize=15
 
-#### Set Chromium URL:
+#### Set Chromium URL: 
 
 sudo nano/etc/xdg/openbox/environment  -- >>  edit URL
 
