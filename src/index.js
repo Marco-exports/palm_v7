@@ -5,7 +5,7 @@ import {Provider as StyletronProvider} from "styletron-react"
 import {Client as Styletron} from "styletron-engine-atomic"
 import './Utilities/theme.css'
 import './App.css'
-import Apps from "../../../../Desktop/untitled folder/src/App"
+import Apps from "./App"
 
 const engine = new Styletron()
 function App() { return <Apps /> }
@@ -20,4 +20,3 @@ ReactDOM.render(
     </StyletronProvider>,
    rootElement
 )
-
