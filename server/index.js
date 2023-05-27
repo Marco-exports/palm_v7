@@ -27,10 +27,10 @@ const io = require('socket.io')(server, {pingTimeout: 60000 }) // io server
 server.listen(port,() => console.log(` Node on port :  ${port}`))
 
 const { createProxyMiddleware } = require('http-proxy-middleware')
-// const pigpio = require("pigpio");
+
 module.exports = function(app) {app.use('/', createProxyMiddleware({target: 'http://localhost:3000', changeOrigin: true }))}
 
-app.use('/', express.static( '../build'))
+app.use('/', express.static( './build'))
 app.use('/fans', require('./routes/tab_fans').router)    // TAB:  config fan speeds
 // app.use('/backlight', require('./routes/backlight').router) // obsolete
 app.use('/windows', require('./routes/tab_windows').router)

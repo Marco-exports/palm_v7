@@ -5,7 +5,8 @@ import {ReactComponent as AutoOn} from './Auto-icon-red.svg'
 import {ReactComponent as FanSvg} from './fan_speed.svg'
 import socketIOClient from "socket.io-client"
 
-const socket = socketIOClient();
+const socket = socketIOClient()
+
 const speed_text =  ["< OFF-LINE >","AUTO","SOFT","BREEZE","MISTRAL","VIENTO !"]
 
 class FanSpeed extends React.Component {
