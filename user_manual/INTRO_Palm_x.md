@@ -1,5 +1,7 @@
 # INTRO to PALM_user
 
+### yarn
+
 ### Available Scripts
 
 In the project directory, you can run:
