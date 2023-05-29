@@ -1,15 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-const { promisify } = require("util");
-const readFile = promisify(fs.readFile);
-const baseDir = path.join(__dirname,'.././database');
+const fs = require('fs')
+const path = require('path')
+const { promisify } = require("util")
+const readFile = promisify(fs.readFile)
+const baseDir = path.join(__dirname,'.././database')
 
 class Crud {
     create (file,data) {
         fs.open(`${baseDir}/${file}.json`,'wx',(err,identifier)=>{
             if(!err && identifier){
-                let jsonArray = [];
-                jsonArray.push(data);
+                let jsonArray = []
+                jsonArray.push(data)
                 let stringData = JSON.stringify(jsonArray,null,3);
                 fs.writeFile(identifier,stringData,(err)=>{
                     if(!err){
@@ -52,10 +52,10 @@ class Crud {
 
     delete (file) {
         fs.unlink(`${baseDir}/${file}.json`,err=>{
-            if(!err) console.log('deleted');
-            else console.log('Error deleting file');
+            if(!err) console.log('deleted')
+            else console.log('Error deleting file')
         })
     }
 }
 
-module.exports = Crud;
+module.exports = Crud

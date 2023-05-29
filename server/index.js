@@ -54,7 +54,7 @@ require('./modules/backlight')(io)
 
 console.log(' Memory usage: ')
 console.log( process.memoryUsage() )
-var IP_address = require('os').networkInterfaces()
+const IP_address = require('os').networkInterfaces()
 console.log(' IP: ' + IP_address.wlan0[0].address )
 // console.dir(IP_address, { depth: null })
 
@@ -68,11 +68,12 @@ if(process.platform==='linux') {
    SABIANA.pwmFrequency(2000)
    console.log("starting GPIO 12/18 : " + WATER.getPwmFrequency() +" : " +SABIANA.getPwmFrequency())
 
-   setInterval(() => {
-      WATER.pwmWrite(dutyCycle)
-      SABIANA.pwmWrite(dutyCycle)
-      console.log("WATER / SABIANA : " + dutyCycle)
-      dutyCycle += 15
-      if (dutyCycle > 255) { dutyCycle = 0 }
-   }, 20000)    // n-seconds
+   if(dutyCycle > 10000000){
+      setInterval(() => {
+         WATER.pwmWrite(dutyCycle)
+         SABIANA.pwmWrite(dutyCycle)
+         console.log("WATER / SABIANA : " + dutyCycle)
+         dutyCycle += 15
+         if (dutyCycle > 255) { dutyCycle = 0 }
+   }, 20000)}    // n-seconds
 }

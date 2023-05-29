@@ -2,7 +2,6 @@ const rpio = require('rpio');
 /*
  * Pulse an LED attached to P12 / GPIO18 5 times.
  */
-
 const pin = 12;		/* P12/GPIO18 */
 const range = 1024;	/* LEDs can quickly hit max brightness, so only use */
 const max = 128;		/*   the bottom 8th of a larger scale */
@@ -16,7 +15,6 @@ let times = 5;		/* How many times to pulse before exiting */
 rpio.open(pin, rpio.PWM);
 rpio.pwmSetClockDivider(clockdiv);
 rpio.pwmSetRange(pin, range);
-
 /*
  * Repeatedly pulse from low to high and back again until times runs out.
  */

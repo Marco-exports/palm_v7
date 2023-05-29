@@ -95,4 +95,3 @@ function CFG_save_DHT( TempHumid ){
         console.log("humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
     }
 }
-

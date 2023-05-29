@@ -7,7 +7,7 @@ if(process.platform !== 'darwin') {
    const backlight = require('rpi-backlight')
 
    router.route('/getBrightness')
-      .get( (req, res) => {
+      .get((req, res) => {
          backlight.getBrightness().then((brightnessValue) => {
             res.send('Screen bright: ' + brightnessValue )
             console.log('Screen bright: ' + brightnessValue)

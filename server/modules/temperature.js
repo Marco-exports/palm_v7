@@ -4,23 +4,21 @@ module.exports = function(io) {
 
     io.on("connection", function (socket) {socket.join("room")
 
-       // socket.on("disconnect", () => { console.log(`drop < TEMP >`)})
-
         socket.on('getTemp', function () {
             io.emit("Temp_API", ROOM_ID_STATx.tempSet )     // send to app
             console.log(" NODE sending Temp_API -> " + ROOM_ID_STATx.tempSet)
         })
 
         socket.on('setTemp', function (data) {
-            console.log( 'TRY setTemp -> ' + data.setTemp +' : '+ ROOM_ID.cool_temp_min+' / '+ROOM_ID.cool_temp_max);
+           // console.log( 'TRY setTemp -> ' + data.setTemp +' : '+ ROOM_ID.cool_temp_min+' / '+ROOM_ID.cool_temp_max);
 
             if(data.setTemp > ROOM_ID.cool_temp_max){
                 ROOM_ID_STATx.tempSet = ROOM_ID.cool_temp_max;
-                console.log( 'setTemp -> ' + data.setTemp +' : error -- max temp');
+                console.log( 'setTemp -> ' + data.setTemp +' : -- max temp');
             }
             else if(data.setTemp < ROOM_ID.cool_temp_min){
                 ROOM_ID_STATx.tempSet = ROOM_ID.cool_temp_min;
-                console.log('setTemp -> ' + data.setTemp+' : error -- min temp')}
+                console.log('setTemp -> ' + data.setTemp+' : -- min temp')}
             else {
                 console.log('setTemp -> ' + data.setTemp);    // set_temperature "data"}
                 ROOM_ID_STATx.tempSet = data.setTemp;

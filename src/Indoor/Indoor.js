@@ -1,7 +1,7 @@
 import React from "react"
 import './Indoor.css'
 import socketIOClient from "socket.io-client"
-import WindowsOpen from "../../../../../Desktop/untitled folder/src/Windows/Windows" // run WINDOWS from this module
+import WindowsOpen from "../Windows/Windows" // run WINDOWS from this module
 const socket = socketIOClient()
 
 class Indoor extends React.Component {
