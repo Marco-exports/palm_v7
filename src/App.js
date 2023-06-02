@@ -9,7 +9,7 @@ import DateTime from './Utilities/DateTimeMoment'
 import DayNight from './Utilities/DayNight'
 import TempFC from './Utilities/Temperature_F_C'
 import QRcode from './Modal/QR_PopUp'
-import OneWireTemp from './Utilities/One_Wire'
+import OneWireTemp from './Utilities/One_Wire_Temp'
 import Backlight from "./Utilities/Backlight"
 
 class App extends React.Component {

@@ -3,7 +3,6 @@ import _ from 'lodash'
 import './Windows.css'
 import socketIOClient from "socket.io-client"
 import Window_open from "./MS_Window.png"
-
 const socket = socketIOClient()
 
 class WindowsOpen extends React.Component {

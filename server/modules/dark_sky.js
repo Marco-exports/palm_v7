@@ -1,7 +1,7 @@
 module.exports = function(io) {
     const axios = require('axios')
     // const moment = require('moment')
-    let interval   // interval fetching weather data -- every 10 minutes
+    let interval   // interval fetching weather data -- every 15 minutes
 
     io.on("connection", function (socket) {
         socket.on('GetOutdoor', function (data) {
@@ -10,7 +10,7 @@ module.exports = function(io) {
         })
 
         if(interval){ clearInterval(interval)}
-        interval = setInterval(() => getApiAndEmit(socket),600000)  // millisec = every 10 minutes
+        interval = setInterval(() => getApiAndEmit(socket),900000)  // millisec = every 15 minutes
     })
 
     const getApiAndEmit = async socket => {

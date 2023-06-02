@@ -14,7 +14,7 @@ class Indoor extends React.Component {
         socket.on("Indoor_API", data => {
             //console.log(data)
             this.setState({response: data})
-        });
+        })
         socket.emit('GetIndoor', {INDOOR: 'request'})  // request temp/humid data
     }
     componentWillUnmount() {}
