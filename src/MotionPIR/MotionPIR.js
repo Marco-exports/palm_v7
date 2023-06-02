@@ -1,6 +1,5 @@
 import React from "react"
 import socketIOClient from "socket.io-client"
-
 const socket = socketIOClient()
 
 class MotionPIR extends React.Component {
@@ -10,14 +9,14 @@ class MotionPIR extends React.Component {
    }
    componentDidMount() {
       socket.on("PIRs_API", data => { this.setState({ response: data }) })   // "1" or "0"
-      socket.emit('Get_PIRs', { PIR_motion : 'request' });  // request streaming PIRs
+      socket.emit('Get_PIRs', { PIR_motion : 'request' })  // request streaming PIRs
    }
 
    render() {
-      const { response } = this.state;
+      const { response } = this.state
       return (
          <div className="motion_PIR">
-            PIR move :  {response}
+            PIR move : {response}
          </div>
       );
    }

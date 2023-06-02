@@ -20,4 +20,4 @@ class ConfigRoom extends Component {
         )
     }
 }
-export default ConfigRoom;
+export default ConfigRoom

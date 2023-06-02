@@ -8,7 +8,7 @@ if (process.platform==='linux') {
    pigpio.configureClock(5, pigpio.CLOCK_PWM)   // lowest CPU usage x
 }
 console.log(' Node -v : ' + process.version)     // node -v == v12.22.4
-const config_files = require('./config')   // ROOM --> config
+const config_files = require('./config')   // ROOM --> './CFG_ROOM'
 console.log(config_files)     //  -->  "ROOM_Id : CFG_PC601_STUDY"
 const port = process.env.PORT || 8080
 

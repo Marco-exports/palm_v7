@@ -29,7 +29,7 @@ module.exports = function(io) {
 
         io.on("connection", socket => {
             if (interval) { clearInterval(interval)}
-            interval = setInterval(() => getBankAndEmit(socket), 10000)  // 10 seconds
+            interval = setInterval(() => getBankAndEmit(socket), 20000)  // 20 seconds
         })
 
         const getBankAndEmit = async socket => {
@@ -58,12 +58,11 @@ module.exports = function(io) {
             console.log( 'WinOpen :', WinOPEN, _idArray, testWinOPEN )    // "W1":1,"W2":1,"W3":1,"W4":1   [ 'W1', 'W4' ]
 
             let test = { W1:0,W2:1,W3:1,W4:1,W5:0 }
-            // console.log('PICKER :', _.pick(test, _idArray))
+            // console.log('PICK :', _.pick(test, _idArray))
             let object = { W1:0,W2:1,W3:1,W4:1,W5:0 }
 
             console.log(Array.from( testWinOPEN ))
-
-            console.log('PICKER_X :', _.pick( Array.from( {  testWinOPEN  } ) ) )
+            console.log('PICK :', _.pick( Array.from({ testWinOPEN } ) ) )
 
             BankData = '[ WX:00'+ BankData +' DT: ' + moment().format("HH:mm:ss") + ' ]  -> ' + WinOPEN
             // [ WX:00 W1:0 W2:1 W3:1 W4:0 W5:0 PIR:0 DAY:1 DT: 21:14:08 ]  -> "W1":1,"W2":1,"W3":1,"W4":1

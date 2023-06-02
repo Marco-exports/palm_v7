@@ -17,8 +17,8 @@ module.exports = {
     cool_temp_max: 86,		// max cooling: 86 F
     cool_fan_min: 20,		// fan min cooling: 20%
     cool_fan_max: 80,		// fan max cooling: 80%
-    heat_temp_min: 70,		// min heating: 70 F
-    heat_temp_max: 85,		// max heating: 85 F
+    heat_temp_min: 72,		// min heating: 72 F
+    heat_temp_max: 82,		// max heating: 82 F
     heat_fan_min: 20,		// fan min heating: 20%
     heat_fan_max: 80,		// fan max heating: 80%
     chill_max: 100,		// 100%
@@ -38,7 +38,7 @@ module.exports = {
        {
            "_id": "side_17",
            "order": 1,
-           "state": 1,
+           "state": 0,
            "delay": 120,
            "off_delay": 60,
            "RPi_GPIO": 17,
@@ -56,7 +56,7 @@ module.exports = {
     {
         "_id": "left",
         "order": 2,
-        "state": 1,
+        "state": 0,
         "delay": 0,
         "off_delay": 300,
         "RPi_GPIO": 23,

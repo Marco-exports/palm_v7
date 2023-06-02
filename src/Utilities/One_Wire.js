@@ -1,6 +1,5 @@
 import React from "react"
 import socketIOClient from "socket.io-client"
-
 const socket = socketIOClient()
 
 class OneWireTemp extends React.Component {
@@ -10,7 +9,6 @@ class OneWireTemp extends React.Component {
    }
    componentDidMount() {
       socket.on("DS18_API", data => { this.setState({ response: data }) })   // temperature F
-
       socket.emit('Get_DS18', { Get_One_Wire : 'request' })  // request streaming One_Wire
    }
 

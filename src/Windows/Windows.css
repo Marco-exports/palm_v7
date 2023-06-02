@@ -17,13 +17,13 @@ ul{
 .window-li {
     position: relative;
     list-style-type:none;
-    height: 50px;
+    height: 40px;
 }
 .window-icon {
     position: relative;
     border-radius: 0;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
 }
 .window-name{
     position: relative;

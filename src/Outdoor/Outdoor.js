@@ -1,6 +1,5 @@
 import React from "react"
 import socketIOClient from "socket.io-client"
-
 const socket = socketIOClient()
 
 class Outdoor extends React.Component {
@@ -16,16 +15,17 @@ class Outdoor extends React.Component {
         });
         socket.emit('GetOutdoor', { OUTDOOR : 'request' });  //  initial request for streaming weather data
     }
-    componentWillUnmount(){this._isMounted = false};
+    componentWillUnmount(){this._isMounted = false}
 
     render() {
         const { response } = this.state
+        console.log(response)
         return (
            <div className="out_temp_humid">
-               {response ? <span>{deg_F_to_C(response.temperature, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
-                   { Math.round(response.humidity*100)} % humidity</span> : <span>...</span>}
+               {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
+                   { Math.round(response.humidity)} % humidity</span> : <span>...</span>}
                <div className="out_temp_humid_wind">
-                   {degToCard(response.windBearing)} : {Math.round(response.windSpeed)} mph &nbsp; &nbsp; {Math.round(response.pressure)} mbar
+                   {degToCard(response.winddir)} : {Math.round(response.windspeed)} mph &nbsp; &nbsp; {Math.round(response.pressure)} mbar
                </div>
            </div>
         )
@@ -56,3 +56,6 @@ var degToCard = function( deg ){
     else if (deg>326.25 && deg<348.75){ return "NNW"}
     else {return "N"}
 }
+
+
+// 25.018202, -77.275562  --> 601

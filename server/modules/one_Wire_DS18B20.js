@@ -4,13 +4,10 @@ module.exports = function(io) {
       let interval
 
       io.on("connection", socket => {
-        // socket.on("disconnect", () => {console.log(`drop < ONE_WIRE >`)})
-
          socket.on('Get_DS18', function (data) {getDS18AndEmit(socket)})
          if (interval) {clearInterval(interval)}
-         interval = setInterval(() => getDS18AndEmit(socket), 200000);  // millisec = 15 seconds
+         interval = setInterval(() => getDS18AndEmit(socket), 200000)  // millisec = 15 seconds
       })
-
 
       const getDS18AndEmit = async socket => {
          sensorF.readSimpleF(1, (err, temp) => {

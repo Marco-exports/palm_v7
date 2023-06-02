@@ -79,10 +79,10 @@ class App extends React.Component {
                      <div className="footer">
                         <div className="footer_left">
                            <ConfigRoom/>
+                           <AppReloader/>
                            <MotionPIR/>
                            <OneWireTemp/>
                            <Backlight/>
-                           <AppReloader/>
                         </div>
                         <div className="footer_right">footer_right...</div>
                      </div>

@@ -1,9 +1,9 @@
 exports.GpioToPin = (inputArray) => {
    let output = []     // default = null array
-   // WINDOW --> GPIO's == { 17,22,23,24 }    (PIR GPIO = 6:23)   (LIGHT --> GPIO = 25:4)
-   const GpioPins = { 17:6, 22:5, 23:12, 24:7, 4:25, 6:23, 25:4 }   // binary-> RPi_GPIO : GpioBank
+   // WINDOW --> GPIO's == { 17,22,23,24 }  (PIR GPIO = 6:23) (LIGHT --> GPIO = 25:4)
+   const GpioPins = { 17:6, 22:5, 23:12, 24:7, 4:25, 6:23, 25:4 }  // binary-> RPi_GPIO : GpioBank
 
-   let BankPinOut;
+   let BankPinOut
    if (process.platform === 'linux') {
       const pigpio = require('pigpio')
       const GpioBank = pigpio.GpioBank
