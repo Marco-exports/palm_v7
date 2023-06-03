@@ -11,7 +11,7 @@ module.exports = function(io) {
         io.on("connection", socket => {
             socket.on('GetWindows', function (data) {getWindowsAndEmit(socket)})
             if (interval) {clearInterval(interval)}
-            interval = setInterval(() => getWindowsAndEmit(socket), 60000)  // millisec = 60 seconds
+            interval = setInterval(() => getWindowsAndEmit(socket), 120000)  // millisec = 120 seconds
         })
 
         const getWindowsAndEmit = async socket => {

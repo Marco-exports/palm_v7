@@ -8,13 +8,9 @@ class Indoor extends React.Component {
     constructor(props) {
         super(props)
         this.state = { response: false}
-       // console.log(props)
     }
     componentDidMount() {
-        socket.on("Indoor_API", data => {
-            //console.log(data)
-            this.setState({response: data})
-        })
+        socket.on("Indoor_API", data => { this.setState({response: data })})
         socket.emit('GetIndoor', {INDOOR: 'request'})  // request temp/humid data
     }
     componentWillUnmount() {}
@@ -36,7 +32,7 @@ export default Indoor
 
 const F_to_C = function (deg) {
    return Math.round((deg - 32) * 5 / 9)
-};
+}
 
 const CelciusGrid = (props) => (
    <div className="indoor-grid-C">

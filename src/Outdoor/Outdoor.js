@@ -33,6 +33,10 @@ class Outdoor extends React.Component {
 }
 export default Outdoor
 
+const F_to_C = function (deg) {
+    return Math.round((deg - 32) * 5 / 9)
+}
+
 var deg_F_to_C = function( deg , F_to_C ){
     if(F_to_C === "C"){ return( Math.round((deg-32)/(9/5)))
     }else{ return( Math.round( deg ))}
@@ -59,3 +63,6 @@ var degToCard = function( deg ){
 
 
 // 25.018202, -77.275562  --> 601
+
+
+//  {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
