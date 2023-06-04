@@ -9,11 +9,11 @@ class Outdoor extends React.Component {
         this.state = { response: false }
     }
     componentDidMount() {
-        this._isMounted = true;
+        this._isMounted = true
         socket.on("WeatherAPI", data => {
             if(this._isMounted){ this.setState({ response: data })}
-        });
-        socket.emit('GetOutdoor', { OUTDOOR : 'request' });  //  initial request for streaming weather data
+        })
+        socket.emit('GetOutdoor', { OUTDOOR : 'request' })  // initial request to stream weather data
     }
     componentWillUnmount(){this._isMounted = false}
 
@@ -21,17 +21,18 @@ class Outdoor extends React.Component {
         const { response } = this.state
         console.log(response)
         return (
-           <div className="out_temp_humid">
-               {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
-                   { Math.round(response.humidity)} % humidity</span> : <span>...</span>}
-               <div className="out_temp_humid_wind">
-                   {degToCard(response.winddir)} : {Math.round(response.windspeed)} mph &nbsp; &nbsp; {Math.round(response.pressure)} mbar
-               </div>
-           </div>
+            <div className="out_temp_humid">
+                {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
+                    { Math.round(response.humidity)} % humidity</span> : <span>...</span>}
+                <div className="out_temp_humid_wind">
+                    {degToCard(response.winddir)} : {Math.round(response.windspeed)} mph &nbsp; &nbsp; {Math.round(response.pressure)} mbar
+                </div>
+            </div>
         )
     }
 }
 export default Outdoor
+
 
 const F_to_C = function (deg) {
     return Math.round((deg - 32) * 5 / 9)
@@ -66,3 +67,4 @@ var degToCard = function( deg ){
 
 
 //  {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
+

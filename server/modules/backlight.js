@@ -4,7 +4,6 @@ module.exports = function(io) {
         let interval
 
         io.on("connection", socket => {
-
             socket.on('Get_BackLight', function () { getBacklightAndEmit(socket)})
             if (interval) {clearInterval(interval)}
             interval = setInterval(() => getBacklightAndEmit(socket), 10000)  // millisec = 90 seconds

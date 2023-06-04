@@ -43,7 +43,7 @@ app.get('/QRQRQ', function (req, res) {
 )
 
 require('./modules/gpioBankRead')(io)
-require('./modules/dark_sky')(io)
+require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
 require('./modules/indoor')(io)

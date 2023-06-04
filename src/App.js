@@ -23,7 +23,6 @@ class App extends React.Component {
    toggleTemp() {
       const temp = this.state.temp === "F" ? "C" : "F"
       this.setState({ temp })
-      //console.log('TEMP: ' + temp)
       document.documentElement.setAttribute("data-temp", temp)
    }
 

@@ -11,7 +11,6 @@ module.exports = io => {
                 temp : C_to_F(data.temperature),
                 humid : round(data.humidity, 1.0)
             }
-
             console.log(temp_humid.temp)
             CFG_save_DHT( temp_humid )   // store statistics
         })

@@ -1,7 +1,7 @@
 module.exports = function(io) {
     const axios = require('axios')
     // const moment = require('moment')
-    let interval   // interval fetching weather data -- every 20 min = 1200000 ms
+    let interval   // interval fetch weather data every hour = 3600000 ms (1 hour)
 
     io.on("connection", function (socket) {
         socket.on('GetOutdoor', function (data) {
@@ -10,7 +10,7 @@ module.exports = function(io) {
         })
 
         if(interval){ clearInterval(interval)}
-        interval = setInterval(() => getApiAndEmit(socket),1200000)  // millisec = every 20 min = 1200000 ms
+        interval = setInterval(() => getApiAndEmit(socket),3600000)  // millisec = every hour = 3600000 ms
     })
 
     const getApiAndEmit = async socket => {
@@ -29,10 +29,6 @@ module.exports = function(io) {
     }
 }
 
-
 // 25.018202, -77.275562  --> Palm Cay 601
 
 //  https://www.epochconverter.com/
-
-// "https://api.darksky.net/forecast/9db961cbb17b1499d96c87c58cd56afa/25.0407,-77.4701"
-// "https://api.darksky.net/forecast/e0db0dc6e6eba46971a5b1a853baf2fd/43.7695,11.2558"
