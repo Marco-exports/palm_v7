@@ -14,10 +14,14 @@ class Backlight extends Component {
    render() {
       return (
          <div className="backlight">
-            <div>{ this.state.result}</div>
+            <div>----</div>
          </div>
       )
    }
 }
 export default Backlight
 
+
+// <div className="backlight">
+//   <div>{this.state.result}</div>
+// </div>

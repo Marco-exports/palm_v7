@@ -9,7 +9,7 @@ module.exports = function(io) {
       io.on("connection", socket => {
          socket.on('Get_PIRs', function (data) {getPIRsAndEmit(socket)})
          if (interval) {clearInterval(interval)}
-         interval = setInterval(() => getPIRsAndEmit(socket), 15000);  // millisec = 15 seconds
+         interval = setInterval(() => getPIRsAndEmit(socket), 15000)  // millisec = 15 seconds
       })
 
       const getPIRsAndEmit = async socket => {
