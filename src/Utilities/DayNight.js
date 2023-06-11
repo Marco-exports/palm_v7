@@ -6,8 +6,7 @@ import "./DayNight.css"
 const Day_Night = { Day: RPi_Day, Night: RPi_Night }
 
 const DayNight = ({ toggleTheme, Day }) => (
-
-   <img className="dayNight"
+   <img className="day_Night"
         src = { Day_Night[ Day === 'day'?'Day':'Night'] }
         alt="!"
         onClick = { e => toggleTheme()}
@@ -16,5 +15,5 @@ const DayNight = ({ toggleTheme, Day }) => (
 export default DayNight
 
 
-// DayNight is only color changes ...
+// Day_Night is only color changes ...
 // needs replacement with backlight controls
