@@ -26,7 +26,7 @@ class Thermostat extends React.Component {
             this.setState({tempSet: this.state.setTemp + data})
         })
         socket.emit('getTemp', { INDOOR : 'request'})  // ask server for Temperature
-    };
+    }
     componentWillUnmount(){}
 
     ClickSet(i) {

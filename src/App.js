@@ -18,11 +18,13 @@ class App extends React.Component {
       this.state = { theme: "day", temp: "F" }
       this.toggleTemp = this.toggleTemp.bind(this)
       this.toggleTheme = this.toggleTheme.bind(this)
+      this.toggleBacklight = this.toggleBacklight.bind(this)
    }
 
    toggleTemp() {
       const temp = this.state.temp === "F" ? "C" : "F"
       this.setState({ temp })
+      console.log('Temp: ' + temp)
       document.documentElement.setAttribute("data-temp", temp)
    }
 
@@ -34,6 +36,13 @@ class App extends React.Component {
       document.documentElement.setAttribute("data-theme", theme)
       window.setTimeout(() => {
          document.documentElement.classList.remove("color-theme-in-transition")},1000)
+   }
+
+   toggleBacklight() {
+      const light = this.state.light === "Day" ? "Night" : "Day"
+      this.setState({ light })
+      console.log('Backlight : '+ light)
+      document.documentElement.setAttribute("data-temp", light)
    }
 
    render() {
@@ -81,7 +90,7 @@ class App extends React.Component {
                            <AppReloader/>
                            <MotionPIR/>
                            <OneWireTemp/>
-                           <Backlight/>
+                           <Backlight toggleTheme={this.toggleBacklight} Day={this.state.theme}/>
                         </div>
                         <div className="footer_right">footer_right...</div>
                      </div>
