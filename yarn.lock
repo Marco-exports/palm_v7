@@ -11093,10 +11093,10 @@ round-to@^5.0.0:
   resolved "https://registry.yarnpkg.com/round-to/-/round-to-5.0.0.tgz#a66292701a93b194f630a0d57f04c08821b6eeed"
   integrity sha512-i4+Ntwmo5kY7UWWFSDEVN3RjT2PX1FqkZ9iCcAO3sKML3Ady9NgsjM/HLdYKUAnrxK4IlSvXzpBMDvMHZQALRQ==
 
-rpi-backlight@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/rpi-backlight/-/rpi-backlight-0.3.0.tgz#8146984db9d6e995effd0bf475c08cc2e7a7e8e0"
-  integrity sha512-meMjhqmfnUg/EClTzHQiclAcB/6SBoOAIxTxWUBPU9Zj5ZQogqu/ogzX8v2abj2QF5u961cUA5ABJGzbOyc4Wg==
+rpi-backlight@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/rpi-backlight/-/rpi-backlight-0.4.0.tgz#9f48fbdf8fd1ebd0ea04b2fb60f39416d44b9c2b"
+  integrity sha512-yK7QnwwDbrn+3E1Wv7I9F8X193WekJxQk7f00jikaXyKfRZeJYIOQ0lfq8VnutuGq2DkzmXl2QyyLXZaWJ3ykw==
 
 rsvp@^3.3.3:
   version "3.6.2"

@@ -13,7 +13,7 @@ class Outdoor extends React.Component {
         socket.on("WeatherAPI", data => {
             if(this._isMounted){ this.setState({ response: data })}
         })
-        socket.emit('GetOutdoor', { OUTDOOR : 'request' })  // initial request to stream weather data
+            socket.emit('GetOutdoor', { OUTDOOR : 'request' })  // initial request to stream weather data
     }
     componentWillUnmount(){this._isMounted = false}
 

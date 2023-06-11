@@ -19,7 +19,7 @@ module.exports = function(io) {
                 "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/25.018202%2C%20-77.275562?unitGroup=metric&include=current&key=RTAPSPVC9LUQLL8JSS5P76PT5&contentType=json"
             )
             // console.log(" OUTDOOR: ", res.data.currentConditions)
-           // console.log(" OUTDOOR_X: ", moment(res.data.currently.time * 1000).format("lll"))
+            // console.log(" OUTDOOR_X: ", moment(res.data.currently.time * 1000).format("lll"))
             socket.emit("WeatherAPI", res.data.currentConditions)   // reply from DARKSKY --> send to screen
             socket.broadcast.emit("WeatherAPI", res.data.currentConditions)   // broadcast to other clients
             console.log('Outdoor TEMP : ' + res.data.currentConditions.temp)

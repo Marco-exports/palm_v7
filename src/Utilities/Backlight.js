@@ -1,25 +1,21 @@
-import React, {Component} from 'react'
+import React from 'react'
+import RPi_Day from './RPi_DAY.svg'
+import RPi_Night from './RPi_NIGHT.svg'
+import "./DayNight.css"
 
-class Backlight extends Component {
-   constructor(props) {
-      super(props)
-      this.state = { result: null }
-   }
-   componentDidMount() {
-      fetch("/backlight/setBrightness/30")
-         .then(response => response.text())
-         .then(data => this.setState(({result: data})))
-   }
+const Day_Night = { Day: RPi_Day, Night: RPi_Night }
 
-   render() {
-      return (
-         <div className="backlight">
-            <div>----</div>
-         </div>
-      )
-   }
-}
+const Backlight = ({ toggleTheme, Day }) => (
+
+    <img className="dayNight"
+         src = { Day_Night[ Day === 'day'?'Day':'Night'] }
+         alt="!"
+         onClick = { e => toggleTheme()}
+    />
+)
+
 export default Backlight
+
 
 
 // <div className="backlight">

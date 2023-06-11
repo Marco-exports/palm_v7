@@ -14,3 +14,7 @@ const DayNight = ({ toggleTheme, Day }) => (
    />
 )
 export default DayNight
+
+
+// DayNight is only color changes ...
+// needs replacement with backlight controls
