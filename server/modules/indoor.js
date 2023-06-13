@@ -26,7 +26,7 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
             if(temp_humid.humid<101){
-                console.log("  INDOOR:", " --  " + JSON.stringify(temp_humid))   // << 99% humidity
+                console.log("  INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
             }

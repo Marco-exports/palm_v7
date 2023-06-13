@@ -2,7 +2,6 @@ import React from 'react'
 import RPi_Day from './RPi_DAY.svg'
 import RPi_Night from './RPi_NIGHT.svg'
 import "./DayNight.css"
-
 import socketIOClient from "socket.io-client"
 const socket = socketIOClient()
 
@@ -12,7 +11,12 @@ const Backlight = ({ toggleTheme, Day }) => (
     <img className="dayNight"
          src = { DayNight[ Day === 'day'?'Day':'Night'] }
          alt="!"
-         onClick = { e => toggleTheme()}
+         onClick = { e => {
+             toggleTheme()
+             socket.emit('setBacklight', Day )
+             // console.log('setBacklight', Day )  // Day or Night
+             // socket.broadcast.emit('setBacklight',  Day )
+         }}
     />
 )
 

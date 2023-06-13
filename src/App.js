@@ -6,10 +6,10 @@ import Indoor from './Indoor/Indoor'
 import ConfigRoom from "./Utilities/ConfigRoom"
 import MotionPIR from "./MotionPIR/MotionPIR"
 import DateTime from './Utilities/DateTimeMoment'
-import DayNight from './Utilities/DayNight'
 import TempFC from './Utilities/Temperature_F_C'
 import QRcode from './Modal/QR_PopUp'
 import OneWireTemp from './Utilities/One_Wire_Temp'
+import DayNight from './Utilities/DayNight'
 import Backlight from "./Utilities/Backlight"
 
 class App extends React.Component {
@@ -41,7 +41,7 @@ class App extends React.Component {
    toggleBacklight() {
       const light = this.state.light === "Day" ? "Night" : "Day"
       this.setState({ light })
-      console.log('Backlight : '+ light)
+      // console.log('Backlight : '+ light)
       document.documentElement.setAttribute("data-temp", light)
    }
 

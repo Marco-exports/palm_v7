@@ -6,7 +6,6 @@ import day_down from './arrow_down.jpg'
 import night_up from './arrow_up_dark.jpg'
 import night_down from './arrow_down_dark.jpg'
 import socketIOClient from "socket.io-client"
-
 const socket = socketIOClient()
 
 const arrow_up = { Day_up: day_up, Night_up: night_up }
