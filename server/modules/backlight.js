@@ -2,7 +2,7 @@ module.exports = function(io) {
     if (process.platform === 'linux') {
         const backlight = require("rpi-backlight")
         const RPi_backlight = 30
-        backlight.setBrightness(40)
+        backlight.setBrightness(20)
 
         io.on("connection", socket => {
             socket.on('setBacklight', function ( data ) {

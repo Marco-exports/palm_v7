@@ -9,8 +9,8 @@ import DateTime from './Utilities/DateTimeMoment'
 import TempFC from './Utilities/Temperature_F_C'
 import QRcode from './Modal/QR_PopUp'
 import OneWireTemp from './Utilities/One_Wire_Temp'
-import DayNight from './Utilities/DayNight'
-import Backlight from "./Utilities/Backlight"
+// import DayNight from './Utilities/DayNight'
+// import Backlight from "./Utilities/Backlight"
 
 class App extends React.Component {
    constructor(props) {
@@ -54,7 +54,6 @@ class App extends React.Component {
                      <div className="top-tab">
                         <div className="tab1">
                            <QRcode/>
-                           <DayNight toggleTheme={this.toggleTheme} Day={this.state.theme}/>
                            <TempFC toggleTemp={this.toggleTemp } F={this.state.temp}/>
                         </div>
                         <div className="tab2">tab_2</div>
@@ -71,9 +70,7 @@ class App extends React.Component {
                            </div>
                            <div className="out_text">OUTDOOR</div>
                            <div className="h_line"> </div>
-
                            <Outdoor temp_F_C = {this.state.temp}/>
-
                            <div className="status">STATUS</div>
                            <div className="h_line"> </div>
                         </div>
@@ -90,7 +87,6 @@ class App extends React.Component {
                            <AppReloader/>
                            <MotionPIR/>
                            <OneWireTemp/>
-                           <Backlight toggleTheme={this.toggleBacklight} Day={this.state.theme}/>
                         </div>
                         <div className="footer_right">footer_right...</div>
                      </div>
@@ -104,3 +100,6 @@ class App extends React.Component {
 export default App
 
 //  <Indoor day={this.state.temp}/> ...contains: <Windows />.
+
+//  <Backlight toggleTheme={this.toggleBacklight} Day={this.state.theme}/>
+//  <DayNight toggleTheme={this.toggleTheme} Day={this.state.theme}/>
