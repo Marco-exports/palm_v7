@@ -5,7 +5,7 @@ module.exports = io => {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
         const sensor = dht(Gpio,22)
-        setInterval(()=>{sensor.read()},15000) // minimum every 15 seconds
+        setInterval(()=>{sensor.read()},30000)  // every 30 seconds
         sensor.on('result', data => {
             temp_humid = {
                 temp : C_to_F(data.temperature),

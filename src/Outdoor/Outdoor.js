@@ -15,11 +15,11 @@ class Outdoor extends React.Component {
         })
             socket.emit('GetOutdoor', { OUTDOOR : 'request' })  // initial request to stream weather data
     }
+
     componentWillUnmount(){this._isMounted = false}
 
     render() {
         const { response } = this.state
-        console.log(response)
         return (
             <div className="out_temp_humid">
                 {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;

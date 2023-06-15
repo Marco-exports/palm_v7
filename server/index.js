@@ -42,6 +42,7 @@ app.get('/QRQRQ', function (req, res) {
    console.log("QRQRQ : " + ROOM.room_ID)}
 )
 
+global.OUTDOOR = 0
 require('./modules/gpioBankRead')(io)
 require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
