@@ -1,6 +1,6 @@
 module.exports = io => {
     let interval
-    let temp_humid = {temp : 70, humid : 99}    // temporary
+    let temp_humid = {temp : 70, humid : 90}    // temporary
     if (process.platform==='linux') {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5

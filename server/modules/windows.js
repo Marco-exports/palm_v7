@@ -5,13 +5,14 @@ module.exports = function(io) {
         const GpioToPin = require('./GpioBank').GpioToPin
         const num_windows = ROOM_ID_STATx.windows.length
         console.log(" WINDOWS : " + num_windows )       // Num Windows in room
-        let RP_IOs = ROOM_ID_STATx.windows.map(a => a.RPi_GPIO)
+        let RP_IOs = ROOM_ID_STATx.windows.map( a => a.RPi_GPIO )
         // io.on("connection", socket => { socket.emit('GetWindows')})
 
         io.on("connection", socket => {
             socket.on('GetWindows', function (data) {getWindowsAndEmit(socket)})
+
             if (interval) {clearInterval(interval)}
-            interval = setInterval(() => getWindowsAndEmit(socket), 120000)  // millisec = 120 seconds
+            interval = setInterval(() => getWindowsAndEmit(socket), 240000)  // millisec = 4 minutes
         })
 
         const getWindowsAndEmit = async socket => {

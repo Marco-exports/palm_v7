@@ -44,7 +44,6 @@ app.get('/QRQRQ', function (req, res) {
 
 global.OUTDOOR = 0
 require('./modules/gpioBankRead')(io)
-require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
 require('./modules/indoor')(io)
@@ -52,6 +51,8 @@ require('./modules/indoor')(io)
 require('./modules/motion_PIR')(io)
 require('./modules/one_Wire_DS18B20')(io)
 require('./modules/backlight')(io)
+require('./modules/outdoor')(io)
+require('./modules/outdoor_file')(io)
 
 console.log(' Memory usage: ')
 console.log( process.memoryUsage() )
@@ -76,5 +77,5 @@ if(process.platform==='linux') {
          console.log("WATER / SABIANA : " + dutyCycle)
          dutyCycle += 15
          if (dutyCycle > 255) { dutyCycle = 0 }
-   }, 20000)}    // n-seconds
+      }, 20000)}    // n-seconds
 }

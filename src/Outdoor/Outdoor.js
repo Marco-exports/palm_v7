@@ -20,7 +20,7 @@ class Outdoor extends React.Component {
 
     render() {
         const { response } = this.state
-        console.log('OUTDOOR',this.state)
+        console.log('OUTDOOR  :  ', response)
         return (
             <div className="out_temp_humid">
                 {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;

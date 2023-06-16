@@ -1,26 +1,32 @@
 module.exports = function(io) {
-    let interval   // interval fetch weather every: hour = 3600000  / 30 min = 1800000 /  hour = 600000
-    // using global variable --> ROOM.outdoor
+    let interval   // fetch weather every: hour = 3600000  / 30 min = 1800000 /  10 min = 600000
+    getOUTSIDE().then(r => {console.log("init Outdoor")})   // START
 
-    io.on("connection", function (socket) {
-        socket.on('GetOutdoor', function () {
-            console.log(' GetOutdoor ...')
-            getOutdoorAndEmit(socket)
-        })
-
-        if(interval){ clearInterval(interval) }
-        interval = setInterval(() => getOutdoorAndEmit(socket),600000)  // millisec = every hour = 3600000 ms
-    })
-
-    const getOutdoorAndEmit = async socket => {
-            socket.emit("WeatherAPI", ROOM.outdoor)   // reply from visualcrossing.com --> send to screen
-            socket.broadcast.emit("WeatherAPI", ROOM.outdoor)   // broadcast to other clients
-    }
+    //  run every hour
+    if(interval){ clearInterval(interval) }
+    interval = setInterval(() => getOUTSIDE(),3600000)  // every hour
 }
+    const getOUTSIDE = async socket => {
+        try {
+            const axios = require('axios')
+            const res = await axios.get(
+                "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/25.018202%2C%20-77.275562?unitGroup=metric&include=current&key=RTAPSPVC9LUQLL8JSS5P76PT5&contentType=json"
+            )
+            ROOM.outdoor = res.data.currentConditions       // ROOM.outdoor ==> live updates
+            console.log(' ROOM.outdoor : ', ROOM.outdoor)
+
+        } catch (error) {
+            console.error(` >>> Error ROOM_outdoor : ${error}`)
+        }
+    }
+
+
+
 
 // 25.018202, -77.275562  --> Palm Cay 601
 
 //  https://www.epochconverter.com/tps://www.epochconverter.com/
+
 
 // new Date().toISOString()
 
