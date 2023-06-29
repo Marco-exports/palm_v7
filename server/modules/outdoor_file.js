@@ -4,7 +4,7 @@ module.exports = function(io) {
 
     //  run every hour
     if(interval){ clearInterval(interval) }
-    interval = setInterval(() => getOUTSIDE(),3600000)  // every hour
+    interval = setInterval(() => getOUTSIDE(),3600000)  // hour
 }
     const getOUTSIDE = async socket => {
         try {
@@ -13,7 +13,7 @@ module.exports = function(io) {
                 "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/25.018202%2C%20-77.275562?unitGroup=metric&include=current&key=RTAPSPVC9LUQLL8JSS5P76PT5&contentType=json"
             )
             ROOM.outdoor = res.data.currentConditions       // ROOM.outdoor ==> live updates
-            console.log(' ROOM.outdoor : ', ROOM.outdoor)
+            // console.log(' ROOM.outdoor : ', ROOM.outdoor)
 
         } catch (error) {
             console.error(` >>> Error ROOM_outdoor : ${error}`)

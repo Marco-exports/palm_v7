@@ -8,7 +8,7 @@ module.exports = {
     fan_GPIO: 12,
     cold_GPIO: 13,
     fan_speed: [32,55,78,100],
-    SAVE_EVERY: 5,         // save STAT after 5 minutes of Last_Touched
+    SAVE_EVERY: 10,         // save STAT after 10 minutes of Last_Touched
     publish_every: 120, 	// 120 secs to Firebase
     admin_overide: 0,		// 0 = user, 1 = sys admin ON
     admin_delay: 30,		    // 30 minutes till cancel sys admin overide

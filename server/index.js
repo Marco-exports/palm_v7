@@ -44,6 +44,7 @@ app.get('/QRQRQ', function (req, res) {
 
 global.OUTDOOR = 0
 require('./modules/gpioBankRead')(io)
+require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
 require('./modules/indoor')(io)
@@ -79,3 +80,7 @@ if(process.platform==='linux') {
          if (dutyCycle > 255) { dutyCycle = 0 }
       }, 20000)}    // n-seconds
 }
+
+require('./child_process/lsExec')
+require('./child_process/lsSpawn.js')
+require('./child_process/timeout.sh')

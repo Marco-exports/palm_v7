@@ -23,8 +23,10 @@ class Outdoor extends React.Component {
         console.log('OUTDOOR  :  ', response)
         return (
             <div className="out_temp_humid">
-                {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp;
-                    { Math.round(response.humidity)} % humidity</span> : <span>...</span>}
+                {response ? <span>{deg_F_to_C(response.temp, this.props.temp_F_C)}º {this.props.temp_F_C} &nbsp; &nbsp;
+
+                    { Math.round(response.humidity)} % humid</span> : <span>...</span>}
+
                 <div className="out_temp_humid_wind">
                     {degToCard(response.winddir)} : {Math.round(response.windspeed)} mph &nbsp; &nbsp; {Math.round(response.pressure)} mbar
                 </div>
@@ -40,9 +42,17 @@ const F_to_C = function (deg) {
 }
 
 var deg_F_to_C = function( deg , F_to_C ){
-    if(F_to_C === "C"){ return( Math.round((deg-32)/(9/5)))
+    if(F_to_C === "F"){ return( Math.round((deg * 1.8) + 32) )
     }else{ return( Math.round( deg ))}
 }
+
+//var deg_F_to_C = function( deg , F_to_C ){
+//     if(F_to_C === "F"){ return( Math.round((deg-32)/(9/5)))
+//     }else{ return( Math.round( deg ))}
+// }
+
+
+
 
 var degToCard = function( deg ){
     if (deg>11.25 && deg<33.75){ return "NNE"}
