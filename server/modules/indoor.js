@@ -5,17 +5,17 @@ module.exports = io => {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
         const sensor = dht(Gpio,22)
-        setInterval(()=>{sensor.read()},30000)  // every 30 seconds
+        setInterval(()=>{sensor.read()},60000)  // every 60 seconds
         sensor.on('result', data => {
             temp_humid = {
                 temp : C_to_F(data.temperature),
                 humid : round(data.humidity, 1.0)
             }
-            console.log(temp_humid.temp)
+            // console.log(temp_humid.temp)
             CFG_save_DHT( temp_humid )   // store statistics
         })
         sensor.on('badChecksum', () => {
-            console.log('   INDOOR:  --  checksum failed')
+            console.log('     INDOOR:  XX  checksum failed')
         })
 
         io.on("connection", ( socket ) => {
@@ -26,7 +26,7 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
             if(temp_humid.humid<101){
-                console.log("  INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
+                console.log("     INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
             }

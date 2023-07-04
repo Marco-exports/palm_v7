@@ -12,7 +12,7 @@ module.exports = function(io) {
       const getDS18AndEmit = async socket => {
          sensorF.readSimpleF(1, (err, temp) => {
             if (err) { console.log( err ) } else {
-               console.log('  One_Wire : [' + sensorF.list()+']   ' + temp + ' F')}
+               console.log('      One_Wire : [' + sensorF.list()+']   ' + temp + ' F')}
 
             socket.emit("DS18_API", temp + ' F')            // --> send to screen
             socket.broadcast.emit("DS18_API", temp + ' F')   // broadcast to other clients

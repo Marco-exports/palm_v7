@@ -81,6 +81,10 @@ if(process.platform==='linux') {
       }, 20000)}    // n-seconds
 }
 
-require('./child_process/lsExec')
-require('./child_process/lsSpawn.js')
-require('./child_process/timeout.sh')
+//  require('./child_processes/lsExec')
+// require('./child_processes/lsSpawn.js')
+// require('./child_processes/listFiles')
+//var exec = require('child_process').exec;
+
+ var exec = require('child_process').exec
+ exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 event3')

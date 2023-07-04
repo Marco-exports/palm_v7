@@ -1,8 +1,8 @@
 module.exports = function(io) {
     if (process.platform === 'linux') {
         const backlight = require("rpi-backlight")
-        const RPi_backlight = 30
-        backlight.setBrightness(20)
+        const RPi_backlight = 15
+        backlight.setBrightness(10)
 
         io.on("connection", socket => {
             socket.on('setBacklight', function ( data ) {
@@ -16,3 +16,4 @@ module.exports = function(io) {
 //backlight.getBrightness()
 //backlight.setBrightness(value) // screen goes Off at <= 9 brightness value
 //backlight.getMaxBrightness() ...
+
