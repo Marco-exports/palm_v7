@@ -14,14 +14,12 @@ module.exports = io => {
             // console.log(temp_humid.temp)
             CFG_save_DHT( temp_humid )   // store statistics
         })
-        sensor.on('badChecksum', () => {
-            console.log('     INDOOR:  XX  checksum failed')
-        })
+        sensor.on('badChecksum', () => { console.log('     INDOOR: XX  checksum failed') })
 
         io.on("connection", ( socket ) => {
             socket.on('GetIndoor',  data => {getTempHumidAndEmit(socket)})
             if (interval) {clearInterval(interval)}
-            interval = setInterval(() => getTempHumidAndEmit(socket), 20000)  // sensor read 20 seconds
+            interval = setInterval(() => getTempHumidAndEmit(socket), 30000)  // sensor read 30 seconds
         })
 
         const getTempHumidAndEmit = async socket =>{

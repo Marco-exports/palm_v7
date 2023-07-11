@@ -1,14 +1,14 @@
 module.exports = {
-    _id: "CFG_PC601_STUDY",
-    name: "Palm Cay 601 STUDY",     // pre-set conditions for room...
-    TOUCH_SCREEN: "event3",
+    _id: "CFG_PC601_PLAY",
+    name: "Palm Cay 601 PLAY",     // pre-set conditions for room...
+    TOUCH_SCREEN: "event0",
     PIR_GPIO: 6,            // PIR on GPIO 6
     DHT_GPIO_1: 5,          // primary DHT
     DHT_GPIO_2: 999,         // secondary DHT
     DS18_GPIO: 4,          //DS18BO020 -> one wire TEMP
     fan_GPIO: 12,
     cold_GPIO: 13,
-    fan_speed: [15,25,35,55],
+    fan_speed: [20,35,68,80],
     SAVE_EVERY: 60,         // save STAT after 1 hour of Last_Touched
     publish_every: 120, 	// 120 secs to Firebase
     admin_overide: 0,		// 0 = user, 1 = sys admin ON

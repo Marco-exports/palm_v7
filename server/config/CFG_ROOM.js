@@ -1,3 +1,5 @@
+// FOR EACH Rpi ROOM ASSIGN CONFIG file...
+
 module.exports = {room_ID : "PC601_STUDY"}
 
 // module.exports = {room_ID : "PC601_LIVING"}
@@ -6,6 +8,6 @@ module.exports = {room_ID : "PC601_STUDY"}
 // module.exports = {room_ID : "PC601_MASTER"}
 // module.exports = {room_ID : "PC602_FRONT"}
 // module.exports = {room_ID : "PC602_OCEAN"}
-// module.exports = {room_ID : "PC3rd_BED"}
-// module.exports = {room_ID : "PC3rd_PLAY"}
+// module.exports = {room_ID : "PC300_BED"}
+// module.exports = {room_ID : "PC601_PLAY"}
 // module.exports = {room_ID : "PC601_LIVING"}

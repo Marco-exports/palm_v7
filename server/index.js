@@ -27,6 +27,7 @@ const io = require('socket.io')(server, {pingTimeout: 60000 }) // io server
 server.listen(port,() => console.log(` Node on port :  ${port}`))
 
 const { createProxyMiddleware } = require('http-proxy-middleware')
+// const {TOUCH_SCREEN} = require("./config/CFG_PC601_STUDY")
 
 module.exports = function(app) {app.use('/', createProxyMiddleware({target: 'http://localhost:3000', changeOrigin: true }))}
 
@@ -64,18 +65,18 @@ console.log(' IP: ' + IP_address.wlan0[0].address )
 if(process.platform==='linux') {
    const pigpio = require('pigpio')
    const Gpio = pigpio.Gpio
-   const WATER = new Gpio(12, {mode: Gpio.OUTPUT})    // alt = 13 / 12
+   // const WATER = new Gpio(12, {mode: Gpio.OUTPUT})    // alt = 13 / 12
    const SABIANA = new Gpio(18, {mode: Gpio.OUTPUT})   // alt = 19 / 18
    let dutyCycle = 0
-   WATER.pwmFrequency(2000)
+   // WATER.pwmFrequency(2000)
    SABIANA.pwmFrequency(2000)
-   console.log("starting GPIO 12/18 : " + WATER.getPwmFrequency() +" : " +SABIANA.getPwmFrequency())
+   console.log("starting GPIO 18 : " +SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
 
    if(dutyCycle > 10000000){
       setInterval(() => {
-         WATER.pwmWrite(dutyCycle)
+         // WATER.pwmWrite(dutyCycle)
          SABIANA.pwmWrite(dutyCycle)
-         console.log("WATER / SABIANA : " + dutyCycle)
+         console.log(" SABIANA : " + dutyCycle)
          dutyCycle += 15
          if (dutyCycle > 255) { dutyCycle = 0 }
       }, 20000)}    // n-seconds
@@ -84,7 +85,13 @@ if(process.platform==='linux') {
 //  require('./child_processes/lsExec')
 // require('./child_processes/lsSpawn.js')
 // require('./child_processes/listFiles')
-//var exec = require('child_process').exec;
+// var exec = require('child_process').exec;
 
- var exec = require('child_process').exec
- exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 event3')
+console.log("Touch Screen event: "+ ROOM_ID.TOUCH_SCREEN)
+
+var exec = require('child_process').exec
+exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)
+
+// ****  TIMEOUT ****
+// -- PLAY = event0
+// -- STUDY = event3

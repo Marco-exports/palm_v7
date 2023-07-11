@@ -29,7 +29,7 @@ module.exports = function(io) {
 
         io.on("connection", socket => {
             if (interval) { clearInterval(interval)}
-            interval = setInterval(() => getBankAndEmit(socket), 30000)  // 30 seconds
+            interval = setInterval(() => getBankAndEmit(socket), 45000)  // 45 seconds
         })
 
         const getBankAndEmit = async socket => {
