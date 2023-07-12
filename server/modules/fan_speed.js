@@ -32,7 +32,7 @@ module.exports = (io) => {
             // OFF-LINE / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
             let fanArray = [0,50,25,50,70,100]
             let fanControl = fanArray[ newFanSpeed - 1 ]
-            let fanControl_BIT = fanControl * 2.55
+            let fanControl_BIT = Math.floor(fanControl * 2.55 )
 
             console.log(fanControl +" -- " + fanControl_BIT)
 
