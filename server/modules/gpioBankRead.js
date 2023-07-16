@@ -20,6 +20,8 @@ module.exports = function(io) {
         // GpioPin[10]= ["W9", 21, 40]
         let consoleRepeat = ''
         let interval
+      //  let bankRead_control
+
         let activeWindows = _.filter('ROOM_WIN', {state: 1})   // select on-line windows {state:1}
         // console.log('VALID_WIN: '+ JSON.stringify(activeWindows))   //  {_id:'W1',Gpio:17,'order':1,win:'Side Window',open:0,delay:40,state:1 }
         let delayArray = activeWindows.map((item) => item.delay)   // delayArray = [ 10,50 ]
@@ -75,6 +77,9 @@ module.exports = function(io) {
             // delayArray[0]._id    // delayArray = [ 40, 30, 20 ]
 
             socket.broadcast.emit("GpioBank", BankData)
+
+            //  console.log("GpioBank", BankData)
+            // [ WX:00 W1:1 W2:1 W3:1 W4:1 W5:0 PIR:1 DAY:0 DT: 19:11:40 ]  -> "W1":1,"W2":1,"W3":1,"W4"
         }
     }
 }

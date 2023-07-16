@@ -8,7 +8,7 @@ module.exports = {
     DS18_GPIO: 4,          //DS18BO020 -> one wire TEMP
     fan_GPIO: 12,
     cold_GPIO: 13,
-    fan_speed: [10,15,30,40],  // OFF-LINE / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
+    fan_speed: [0,10,8,15,30,40],  // * OFF-LINE * / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
 
     SAVE_EVERY: 60,         // save STAT after 1 hour of Last_Touched
     publish_every: 120, 	// 120 secs to Firebase

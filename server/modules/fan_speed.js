@@ -12,13 +12,13 @@ module.exports = (io) => {
     io.on("connection", socket => {
 
         socket.on('getFan', function () {
-            io.emit("Fan_API", ROOM_ID_STATx.fanSet )     // EMIT --> send "fanSet" to app
+            io.emit("Fan_API", ROOM_ID_STATx.fanSet )   // EMIT --> send "fanSet" to app
             SetFanSpeed( ROOM_ID_STATx.fanSet )
             console.log(" Fan_API -> " + ROOM_ID_STATx.fanSet)
             })
 
         socket.on('setFan', function (data) {
-            console.log( 'setFan -> ' + data.setFan )    // set fan_speed
+            // console.log( 'setFan -> ' + data.setFan )  // set fan_speed
             ROOM_ID_STATx.fanSet = data.setFan
             SetFanSpeed( data.setFan )
             ROOM_ID_STATx.DT_timestamp = moment().format("YYYY-MM-DD HH:mm")
@@ -30,16 +30,20 @@ module.exports = (io) => {
     function SetFanSpeed( newFanSpeed ){
         if(process.platform==='linux') {
             // OFF-LINE / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
-            let fanArray = [0,50,25,50,70,100]
+            let fanArray = ROOM_ID.fan_speed   // [0,50,25,50,70,100]
             let fanControl = fanArray[ newFanSpeed - 1 ]
             let fanControl_BIT = Math.floor(fanControl * 2.55 )
 
-            console.log(fanControl +" -- " + fanControl_BIT)
+            console.log('FAN_SPEED : '+ newFanSpeed + ' : ' + fanControl + fanControl_BIT)
 
-            console.log(('fanControl: ' + fanControl ) + fanControl_BIT)
+
 
             global.SABIANA.pwmWrite(fanControl_BIT >>0)
 
         } else {console.log(" Darwin : NO FANs")}
     }
 }
+
+
+// Math.floor()
+// console.log(('fanControl: ' + fanControl ) + fanControl_BIT)

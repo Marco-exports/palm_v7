@@ -14,12 +14,12 @@ router.route('/TabsFan')      // load FAN SPEEDS...
       fs.readFile(process.cwd()+'/server/config/CFG_'+ROOM.room_ID+'.js',"utf8",function (err, data) {
          if (err) console.log(err)
          else
-            MyText = data
+             MyText = data
          let pos = MyText.search(/fan_speed:/)
          let fan_text = MyText.substring(pos)
          let fanX = MyText.substring(pos,pos+(fan_text.search(/\]/)+1))
          let fanXXX = fanX.replace(/\[(.*?)\]/,"\\["+"$1"+"\\]")   //fan_speed: /[28,51,76,99/]
-         let replaced = "fan_speed: \[" + req.body + "\]";
+         let replaced = "fan_speed: [" + req.body + "]"
          replaced = replaced.replace(/\[(.*?)\]/,"\["+"$1"+"\]")
          replace({
             regex: fanXXX,

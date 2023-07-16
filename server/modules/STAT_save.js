@@ -6,7 +6,7 @@ module.exports = function( saveImmediate ) {
 
       if( saveImmediate === 0){
             if (JSON_SAVED){clearTimeout(JSON_SAVED)}
-            JSON_SAVED = setTimeout(STAT_saver,(ROOM_ID.SAVE_EVERY) * 60000)     // delay 5 minutes
+            JSON_SAVED = setTimeout(STAT_saver,(ROOM_ID.SAVE_EVERY) * 120000)   // 10 minutes
       }else{
             STAT_saver()
             console.log("STAT_save : immediate")
