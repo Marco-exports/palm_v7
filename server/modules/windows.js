@@ -3,9 +3,9 @@ module.exports = function(io) {
         let interval
         const moment = require('moment')
         const GpioToPin = require('./GpioBank').GpioToPin
-        const num_windows = ROOM_ID_STATx.windows.length
+        const num_windows = ROOM_ID_STAT.windows.length
         console.log(" WINDOWS : " + num_windows )       // Num Windows in room
-        let RP_IOs = ROOM_ID_STATx.windows.map( a => a.RPi_GPIO )
+        let RP_IOs = ROOM_ID_STAT.windows.map( a => a.RPi_GPIO )
         // io.on("connection", socket => { socket.emit('GetWindows')})
 
         io.on("connection", socket => {
@@ -17,7 +17,7 @@ module.exports = function(io) {
 
         const getWindowsAndEmit = async socket => {
             let GpioPins = GpioToPin(RP_IOs)
-            //console.log(GpioPins)           // [ '1', '0', '1', '0' ]
+            console.log(GpioPins)           // [ '1', '0', '1', '0' ]
             for (i = 0; i < ROOM_ID_STATx.windows.length; ++i) {
                 ROOM_ID_STATx.windows[i].open = Number(GpioPins[i])
             }

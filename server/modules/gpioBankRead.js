@@ -14,10 +14,10 @@ module.exports = function(io) {
         GpioPin[4] = ["W5", 27, 13]
         GpioPin[5] = ["PIR", 6, 23]
         GpioPin[6] = ["DAY", 25, 4]
-        // GpioPin[7] = ["W6", 26, 37]    // BANK-2  (WINDOWS)
-        // GpioPin[8] = ["W7", 16, 36]
-        // GpioPin[9] = ["W8", 20, 38]
-        // GpioPin[10]= ["W9", 21, 40]
+        GpioPin[7] = ["W6", 26, 37]    // BANK-2  ( 4x WINDOWS)
+        GpioPin[8] = ["W7", 16, 36]
+        GpioPin[9] = ["W8", 20, 38]
+        GpioPin[10]= ["W9", 21, 40]
         let consoleRepeat = ''
         let interval
       //  let bankRead_control
@@ -27,7 +27,7 @@ module.exports = function(io) {
         let delayArray = activeWindows.map((item) => item.delay)   // delayArray = [ 10,50 ]
         let _idArray = activeWindows.map((item) => item._id)   // _idArray = [ W1, W4 ]
         const numWindows = _idArray.length     // 2
-        console.log('Windows : ' + _idArray, delayArray, numWindows, 'windows')
+        // console.log('Windows : ' + _idArray, delayArray, numWindows, 'windows')
 
         io.on("connection", socket => {
             if (interval) { clearInterval(interval)}
@@ -73,7 +73,6 @@ module.exports = function(io) {
                 consoleRepeat = BankData
                // console.log( '    ' + BankData )
             }
-
             // delayArray[0]._id    // delayArray = [ 40, 30, 20 ]
 
             socket.broadcast.emit("GpioBank", BankData)

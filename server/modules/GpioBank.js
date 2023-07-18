@@ -9,7 +9,7 @@ exports.GpioToPin = (inputArray) => {
       const GpioBank = pigpio.GpioBank
 
       let myBank = new GpioBank()
-      let BankRead = myBank.read().toString(2)      // read RPi -> BANK1
+      let BankRead = myBank.read().toString(2)      // read RPi -> BANK1  string
 
       //console.log("BANK1 -> "+ BankRead)
       // 10000110000101000000111111111   (total 30)
@@ -29,7 +29,10 @@ exports.GpioToPin = (inputArray) => {
       }
       //console.log(BankRead.substr((i-1), 1))
       BankPinOut = [...BankPins + '']
-      console.log(" --> " + BankRead + ' : ' + [...BankPins + ''])
+      if(global.windows !== BankRead){
+         console.log(" --> " + BankRead + ' : ' + [...BankPins + ''])
+      }
+      global.windows = BankRead
    }
    return (BankPinOut)
 }

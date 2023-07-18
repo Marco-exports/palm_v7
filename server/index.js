@@ -43,13 +43,16 @@ app.get('/QRQRQ', function (req, res) {
    console.log("QRQRQ : " + ROOM.room_ID)}
 )
 
+global.windows = ""   // initialize repeat var
+global.INDOOR = ""
 global.OUTDOOR = 0
+
 require('./modules/gpioBankRead')(io)
 require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
 require('./modules/indoor')(io)
-// require('./modules/window')(io)     // send ROOM_WIN
+require('./modules/windows')(io)     // send ROOM_WIN
 require('./modules/motion_PIR')(io)
 require('./modules/one_Wire_DS18B20')(io)
 require('./modules/backlight')(io)
@@ -87,7 +90,7 @@ if(process.platform==='linux') {
 // require('./child_processes/listFiles')
 // var exec = require('child_process').exec;
 
-console.log("Touch Screen event: "+ ROOM_ID.TOUCH_SCREEN)
+console.log(" Touch Screen event: "+ ROOM_ID.TOUCH_SCREEN)
 
 var exec = require('child_process').exec
 exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)

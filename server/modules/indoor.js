@@ -1,6 +1,7 @@
 module.exports = io => {
     let interval
-    let temp_humid = {temp : 70, humid : 90}    // temporary
+    let temp_humid = {temp : 0, humid : 88}    // temporary
+    console.log('  init INDOOR' )
     if (process.platform==='linux') {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
@@ -8,13 +9,12 @@ module.exports = io => {
         setInterval(()=>{sensor.read()},60000)  // every 60 seconds
         sensor.on('result', data => {
             temp_humid = {
-                temp : C_to_F(data.temperature),
-                humid : round(data.humidity, 1.0)
+                humid : round(data.humidity,1.0),
+                temp : C_to_F(data.temperature)
             }
-            // console.log(temp_humid.temp)
             CFG_save_DHT( temp_humid )   // store statistics
         })
-        sensor.on('badChecksum', () => { console.log('     INDOOR: XX  checksum failed') })
+        sensor.on('badChecksum', () => { console.log('    INDOOR:  checksum') })
 
         io.on("connection", ( socket ) => {
             socket.on('GetIndoor',  data => {getTempHumidAndEmit(socket)})
@@ -24,7 +24,10 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
             if(temp_humid.humid<101){
-                console.log("     INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
+                if(global.INDOOR !== JSON.stringify(temp_humid)){
+                    console.log("    INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
+                }
+                global.INDOOR === JSON.stringify(temp_humid)
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
             }
@@ -42,7 +45,6 @@ module.exports = io => {
         })
     }
 }
-
 
     // const moment = require('moment')
     // moment().format("lll")
@@ -67,7 +69,7 @@ function CFG_save_DHT( TempHumid ){
 
     if (ROOM_ID_STATx.temp_humid_day < moment().format('DDD')){    // roll-over increment to next day
         ROOM_ID_STATx.temp_humid_day = Number(moment().format('DDD'))
-        console.log("temp_humid_day : " + ROOM_ID_STATx.temp_humid_day + ' (saved)')
+        console.log(   "temp_humid_day : " + ROOM_ID_STATx.temp_humid_day + ' (saved)')
         STAT_saver(1)   // save immediate
         ROOM_ID_STATx.temp24_hi = TempHumid.temp        // re-set value overnight
         ROOM_ID_STATx.temp24_low = TempHumid.temp
@@ -77,18 +79,18 @@ function CFG_save_DHT( TempHumid ){
     vDay = " ("+ ROOM_ID_STATx.temp_humid_day+")"
     if((ROOM_ID_STATx.temp24_hi < TempHumid.temp)||(ROOM_ID_STATx.temp24_hi === 10)){
         ROOM_ID_STATx.temp24_hi = TempHumid.temp
-        console.log("temp24_hi : " + ROOM_ID_STATx.temp24_hi + vDay)
+        console.log(    "temp24_hi : " + ROOM_ID_STATx.temp24_hi + vDay)
     }
     if((ROOM_ID_STATx.temp24_low > TempHumid.temp)||(ROOM_ID_STATx.temp24_low === 10)){
         ROOM_ID_STATx.temp24_low = TempHumid.temp
-        console.log("temp24_low : " + ROOM_ID_STATx.temp24_low + vDay)
+        console.log("    temp24_low : " + ROOM_ID_STATx.temp24_low + vDay)
     }
     if((ROOM_ID_STATx.humid24_hi < TempHumid.humid)||(ROOM_ID_STATx.humid24_hi === 100)){
         ROOM_ID_STATx.humid24_hi = TempHumid.humid
-        console.log("humid24_hi : " + ROOM_ID_STATx.humid24_hi + vDay)
+        console.log("    humid24_hi : " + ROOM_ID_STATx.humid24_hi + vDay)
     }
     if((ROOM_ID_STATx.humid24_low > TempHumid.humid)||(ROOM_ID_STATx.humid24_low === 100)){
         ROOM_ID_STATx.humid24_low = TempHumid.humid
-        console.log("humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
+        console.log("    humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
     }
 }
