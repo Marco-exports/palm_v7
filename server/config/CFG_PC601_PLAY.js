@@ -33,43 +33,22 @@ module.exports = {
     // -- -- --  WINDOWS:  -- -- --
     // state ->  1 = online, 0 = offline
     // delay ->  10 seconds -- NOTIFY user
-    // off_delay ->  30 seconds -- SHUT OFF COLD
     // -- -- --  WINDOWS:  -- -- --
     windows: [
-       {
-           "_id": "side_17",
-           "order": 1,
-           "state": 0,
-           "delay": 120,
-           "off_delay": 60,
-           "RPi_GPIO": 17,
-           "window": "Side window 17"
-        },
-    {
-        "_id": "side",
-        "order": 3,
-        "state": 1,
-        "delay": 120,
-        "off_delay": 60,
-        "RPi_GPIO": 22,
-        "window": "Side WINDOW"
-    },
-    {
-        "_id": "left",
-        "order": 2,
-        "state": 0,
-        "delay": 0,
-        "off_delay": 300,
-        "RPi_GPIO": 23,
-        "window": "Left front window"
-    },
-    {
-        "_id": "right",
-        "order": 4,
-        "state": 1,
-        "delay": 120,
-        "off_delay": 300,
-        "RPi_GPIO": 24,
-        "window": "Right front window"
-    }
-] }
+        {
+            "_id": "3rd",
+            "order": 1,
+            "state": 1,
+            "online":0,
+            "RPi_GPIO": 17,
+            "window": "3rd floor window"
+        },{
+            "_id": "3rd",
+            "order": 2,
+            "state": 1,
+            "online":0,
+            "RPi_GPIO": 22,
+            "window": "3rd floor window X"
+        }
+    ]
+}

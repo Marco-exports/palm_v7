@@ -9,12 +9,7 @@ class WindowsOpen extends React.Component {
     constructor() {
         super()
         this.state = {
-           windows : [
-               {_id: "side", order: 4, window: "Side Window", state: 0, open: 1, ct_open: 8},
-               {_id: "left", order: 3, window: "Left Window", state: 1, open: 0, ct_open: 4},
-               {_id: "right", order: 2, window: "Right Window", state: 1, open: 1, ct_open: 2},
-               {_id: "center", order: 5, window: "Center Window", state: 1, open: 1, ct_open: 10},
-               {_id: "door", order: 1, window: "Sliding Door", state: 1, open: 1, ct_open: 3}]
+           windows : []
         }
     }
     componentDidMount() {
@@ -23,9 +18,10 @@ class WindowsOpen extends React.Component {
     }
 
     render() {
-       let res = _.sortBy(this.state.windows, ['order']);   // sort by "order"
+       let res = _.sortBy(this.state.windows, ['order'])   // sort by "order"
        res = res.filter(x => x.open !== 0)      // only if --> "state" = 1
        res = _.slice(res,0,4)       // display max --> 4 windows
+
        console.log(res)
 
        return(

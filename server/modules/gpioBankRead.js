@@ -7,7 +7,7 @@ module.exports = function(io) {
         const GpioBank = pigpio.GpioBank
         let myBank = new GpioBank()
         const GpioPin = []
-        GpioPin[0] = ["W1", 17, 6]        // BANK-1
+        GpioPin[0] = ["W1", 17, 6]      // BANK-1
         GpioPin[1] = ["W2", 22, 5]
         GpioPin[2] = ["W3", 23, 12]
         GpioPin[3] = ["W4", 24, 7]
@@ -22,10 +22,10 @@ module.exports = function(io) {
         let interval
       //  let bankRead_control
 
-        let activeWindows = _.filter('ROOM_WIN', {state: 1})   // select on-line windows {state:1}
-        // console.log('VALID_WIN: '+ JSON.stringify(activeWindows))   //  {_id:'W1',Gpio:17,'order':1,win:'Side Window',open:0,delay:40,state:1 }
-        let delayArray = activeWindows.map((item) => item.delay)   // delayArray = [ 10,50 ]
-        let _idArray = activeWindows.map((item) => item._id)   // _idArray = [ W1, W4 ]
+        let activeWindows = _.filter('ROOM_WIN', {state: 1})     // select on-line windows {state:1}
+        // console.log('VALID_WIN: '+ JSON.stringify(activeWindows))                      //  {_id:'W1',Gpio:17,'order':1,win:'Side Window',open:0,delay:40,state:1 }
+        let delayArray = activeWindows.map((item) => item.delay)             // delayArray = [ 10,50 ]
+        let _idArray = activeWindows.map((item) => item._id)                    // _idArray = [ W1, W4 ]
         const numWindows = _idArray.length     // 2
         // console.log('Windows : ' + _idArray, delayArray, numWindows, 'windows')
 
@@ -76,6 +76,8 @@ module.exports = function(io) {
             // delayArray[0]._id    // delayArray = [ 40, 30, 20 ]
 
             socket.broadcast.emit("GpioBank", BankData)
+
+          // console.log("gpioBankRead___GpioBank", BankData)
 
             //  console.log("GpioBank", BankData)
             // [ WX:00 W1:1 W2:1 W3:1 W4:1 W5:0 PIR:1 DAY:0 DT: 19:11:40 ]  -> "W1":1,"W2":1,"W3":1,"W4"

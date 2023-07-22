@@ -12,16 +12,16 @@ module.exports = (io) => {
     io.on("connection", socket => {
 
         socket.on('getFan', function () {
-            io.emit("Fan_API", ROOM_ID_STATx.fanSet )   // EMIT --> send "fanSet" to app
-            SetFanSpeed( ROOM_ID_STATx.fanSet )
-            console.log(" Fan_API -> " + ROOM_ID_STATx.fanSet)
+            io.emit("Fan_API", ROOM_ID_STAT.fanSet )   // EMIT --> send "fanSet" to app
+            SetFanSpeed( ROOM_ID_STAT.fanSet )
+            console.log(" Fan_API -> " + ROOM_ID_STAT.fanSet)
             })
 
         socket.on('setFan', function (data) {
             // console.log( 'setFan -> ' + data.setFan )  // set fan_speed
-            ROOM_ID_STATx.fanSet = data.setFan
+            ROOM_ID_STAT.fanSet = data.setFan
             SetFanSpeed( data.setFan )
-            ROOM_ID_STATx.DT_timestamp = moment().format("YYYY-MM-DD HH:mm")
+            ROOM_ID_STAT.DT_timestamp = moment().format("YYYY-MM-DD HH:mm")
             socket.broadcast.emit("Fan_API", data.setFan )   // EMIT --> BROADCAST to all open apps
             STAT_saver(0 )
         })

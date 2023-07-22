@@ -40,11 +40,11 @@ app.get('/XXXXX', function (req, res) { res.send( ROOM.room_ID )})
 app.get('/ROOM_WIN', function (req, res) { res.send( ROOM_WIN )})
 app.get('/QRQRQ', function (req, res) {
    res.sendFile(__dirname +'/QR_CODES/QR_'+ ROOM.room_ID +'.png')
-   console.log("QRQRQ : " + ROOM.room_ID)}
+   console.log(    "QRQRQ : " + ROOM.room_ID)}
 )
 
 global.windows = ""   // initialize repeat var
-global.INDOOR = ""
+global.indoorTemp = ""
 global.OUTDOOR = 0
 
 require('./modules/gpioBankRead')(io)

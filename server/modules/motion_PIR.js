@@ -3,7 +3,7 @@ module.exports = function(io) {
       let interval
       const moment = require('moment')
       const GpioToPin = require('./GpioBank').GpioToPin
-      console.log(" Last PIR :" + ROOM_ID_STATx.PIR_last_seen)
+      console.log(" Last PIR :" + ROOM_ID_STAT.PIR_last_seen)
       // const RP_PIR = [ROOM_ID.PIR_GPIO]      // Get PIR_GPIO number
 
       io.on("connection", socket => {
@@ -16,7 +16,7 @@ module.exports = function(io) {
          let GpioPIR = GpioToPin([ROOM_ID.PIR_GPIO])    // let GpioPIR = GpioToPin(RP_PIR)
          socket.emit("PIRs_API", GpioPIR)            // --> send to screen
          socket.broadcast.emit("PIRs_API", GpioPIR)   // broadcast to other clients
-         if(GpioPIR === 1) { ROOM_ID_STATx.PIR_last_seen = moment().unix() }
+         if(GpioPIR === 1) { ROOM_ID_STAT.PIR_last_seen = moment().unix() }
       }
    }
 }

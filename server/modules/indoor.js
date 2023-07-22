@@ -1,8 +1,8 @@
 module.exports = io => {
     let interval
-    let temp_humid = {temp : 0, humid : 88}    // temporary
+    let temp_humid = {temp : 10, humid : 88}    // temporary
     console.log('  init INDOOR' )
-    if (process.platform==='linux') {
+    if (process.platform === 'linux') {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
         const sensor = dht(Gpio,22)
@@ -12,7 +12,7 @@ module.exports = io => {
                 humid : round(data.humidity,1.0),
                 temp : C_to_F(data.temperature)
             }
-            CFG_save_DHT( temp_humid )   // store statistics
+           // CFG_save_DHT( temp_humid )   // store statistics
         })
         sensor.on('badChecksum', () => { console.log('    INDOOR:  checksum') })
 
@@ -23,17 +23,18 @@ module.exports = io => {
         })
 
         const getTempHumidAndEmit = async socket =>{
-            if(temp_humid.humid<101){
-                if(global.INDOOR !== JSON.stringify(temp_humid)){
+                if(global.indoorTemp !== JSON.stringify(temp_humid)){
                     console.log("    INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
                 }
-                global.INDOOR === JSON.stringify(temp_humid)
+                global.indoorTemp = JSON.stringify(temp_humid)
+
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
-            }
+
           //  var backlight = require('rpi-backlight')
            // console.log("BRIGHTNESS "+ await backlight.getBrightness())
         }
+
 
     }else{
         io.on("connection", socket => {
@@ -58,6 +59,8 @@ function round(value, step) {    //round(2.74,0.25)=2.75 // round(2.74,0.5)=2.5 
 function C_to_F (value){
     return Math.round((value*1.8)+32+ROOM_ID.temp_calibrate)     // calibrate DHT
 }
+
+
 
 function CFG_save_DHT( TempHumid ){
     let moment
