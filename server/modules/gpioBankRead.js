@@ -20,14 +20,13 @@ module.exports = function(io) {
         GpioPin[10]= ["W9", 21, 40]
         let consoleRepeat = ''
         let interval
-      //  let bankRead_control
 
         let activeWindows = _.filter('ROOM_WIN', {state: 1})     // select on-line windows {state:1}
         // console.log('VALID_WIN: '+ JSON.stringify(activeWindows))                      //  {_id:'W1',Gpio:17,'order':1,win:'Side Window',open:0,delay:40,state:1 }
         let delayArray = activeWindows.map((item) => item.delay)             // delayArray = [ 10,50 ]
         let _idArray = activeWindows.map((item) => item._id)                    // _idArray = [ W1, W4 ]
         const numWindows = _idArray.length     // 2
-        // console.log('Windows : ' + _idArray, delayArray, numWindows, 'windows')
+        console.log('Windows : ' + _idArray, delayArray, numWindows, 'windows')
 
         io.on("connection", socket => {
             if (interval) { clearInterval(interval)}
@@ -71,7 +70,6 @@ module.exports = function(io) {
             // [ WX:00 W1:0 W2:1 W3:1 W4:0 W5:0 PIR:0 DAY:1 DT: 21:14:08 ]  -> "W1":1,"W2":1,"W3":1,"W4":1
             if( consoleRepeat !== BankData ){
                 consoleRepeat = BankData
-               // console.log( '    ' + BankData )
             }
             // delayArray[0]._id    // delayArray = [ 40, 30, 20 ]
 
@@ -86,13 +84,11 @@ module.exports = function(io) {
 }
 
 // const pad = function(a,b){ return ([1e15] + a).slice(-b)}  // pad(num,count) return number w/ leading zeros
-
 //   windows: [
-//       {_id:'W1',Gpio:17,'order':1,win:'Side Window',open:0,delay:40,state:1 },
-//       {_id:'W2',Gpio:23,'order':2,win:'Right Window',open:0,delay:30,state:1 },
-//       {_id:'W3',Gpio:24,'order':3,win:'Left Window',open:0,delay:30,state:1 },
-
-
+//       {_id:'W1',Gpio:17,'order':1, window:'Side Window',open:0,delay:40,state:1 },
+//       {_id:'W2',Gpio:23,'order':2, window:'Right Window',open:0,delay:30,state:1 },
+//       {_id:'W3',Gpio:24,'order':3, window:'Left Window',open:0,delay:30,state:1 },
+//       {_id:'W4',Gpio:24,'order':4, window:'Left Window',open:0,delay:30,state:1 },
 //  ***  _idArray  ***
 //  [
 //   'W', '1', ':', '1', ',',

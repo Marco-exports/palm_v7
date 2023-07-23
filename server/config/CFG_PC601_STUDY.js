@@ -28,28 +28,28 @@ module.exports = {
             "order": 1,
             "state": 1,     //  1 = window --> open
             "online":1,     //  1 = window --> online
-            "RPi_GPIO": 17,
+            "GPIO": 17,
             "window": "Side window 17 X"
         },{
             "_id": "side",
             "order": 2,
             "state": 0,     // 0 = window --> closed
             "online":0,     // 0 = window --> offline
-            "RPi_GPIO": 22,
+            "GPIO": 22,
             "window": "Side window"
         },{
             "_id": "left",
             "order": 3,
             "state": 1,
             "online":0,
-            "RPi_GPIO": 23,
+            "GPIO": 23,
             "window": "Left front window Y"
         },{
             "_id": "right",
             "order": 4,
             "state": 1,
             "online":0,
-            "RPi_GPIO": 24,
+            "GPIO": 24,
             "window": "Right front window"
         }
     ]
