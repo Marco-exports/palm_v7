@@ -1,6 +1,7 @@
 .windows-container {
     display: grid;
-    width: 230px;
+    width: 260px;
+    margin-right: -2px;
     margin-left: -22px;
     margin-top: 15px;
     grid-template-areas: "windows-grid";
@@ -9,7 +10,7 @@
 }
 .windows-grid {
     display: grid;
-    grid-template-columns: 220px;
+    grid-template-columns: 320px;
 }
 ul{
     padding-inline-start: 0px;
@@ -27,11 +28,11 @@ ul{
 }
 .window-name{
     position: relative;
-    width: 170px;
+    width: 270px;
     left: 50px;
     top: -35px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--primaryText);
 }
 .window-open {
@@ -40,7 +41,7 @@ ul{
     left: 230px;
     top: -56px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--primaryText);
 }
 .ct_open {

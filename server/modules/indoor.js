@@ -1,7 +1,8 @@
+// const STAT_saver = require("./STAT_save");
 module.exports = io => {
     let interval
     let temp_humid = {temp : 10, humid : 88}    // temporary
-    console.log('  init INDOOR' )
+    console.log(' Init INDOOR' )
     if (process.platform === 'linux') {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
@@ -14,7 +15,7 @@ module.exports = io => {
             }
            // CFG_save_DHT( temp_humid )   // store statistics
         })
-        sensor.on('badChecksum', () => { console.log('    INDOOR:  checksum') })
+        sensor.on('badChecksum', () => { console.log('  INDOOR : checksum') })
 
         io.on("connection", ( socket ) => {
             socket.on('GetIndoor',  data => {getTempHumidAndEmit(socket)})
@@ -24,7 +25,7 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
                 if(global.indoorTemp !== JSON.stringify(temp_humid)){
-                    console.log("    INDOOR:", " -- " + JSON.stringify(temp_humid))   // << 99% humidity
+                    console.log("  INDOOR: ",  JSON.stringify(temp_humid))   // << 99% humidity
                 }
                 global.indoorTemp = JSON.stringify(temp_humid)
 
@@ -61,39 +62,38 @@ function C_to_F (value){
 }
 
 
-
-function CFG_save_DHT( TempHumid ){
-    let moment
-    let vDay = ''
-    const STAT_saver = require('./STAT_save')
-    moment = require('moment')
-    ROOM_ID_STATx.humid_now = TempHumid.humid
-    ROOM_ID_STATx.temp_now = TempHumid.temp
-
-    if (ROOM_ID_STATx.temp_humid_day < moment().format('DDD')){    // roll-over increment to next day
-        ROOM_ID_STATx.temp_humid_day = Number(moment().format('DDD'))
-        console.log(   "temp_humid_day : " + ROOM_ID_STATx.temp_humid_day + ' (saved)')
-        STAT_saver(1)   // save immediate
-        ROOM_ID_STATx.temp24_hi = TempHumid.temp        // re-set value overnight
-        ROOM_ID_STATx.temp24_low = TempHumid.temp
-        ROOM_ID_STATx.humid24_hi = TempHumid.humid
-        ROOM_ID_STATx.humid24_low = TempHumid.humid
-    }
-    vDay = " ("+ ROOM_ID_STATx.temp_humid_day+")"
-    if((ROOM_ID_STATx.temp24_hi < TempHumid.temp)||(ROOM_ID_STATx.temp24_hi === 10)){
-        ROOM_ID_STATx.temp24_hi = TempHumid.temp
-        console.log(    "temp24_hi : " + ROOM_ID_STATx.temp24_hi + vDay)
-    }
-    if((ROOM_ID_STATx.temp24_low > TempHumid.temp)||(ROOM_ID_STATx.temp24_low === 10)){
-        ROOM_ID_STATx.temp24_low = TempHumid.temp
-        console.log("    temp24_low : " + ROOM_ID_STATx.temp24_low + vDay)
-    }
-    if((ROOM_ID_STATx.humid24_hi < TempHumid.humid)||(ROOM_ID_STATx.humid24_hi === 100)){
-        ROOM_ID_STATx.humid24_hi = TempHumid.humid
-        console.log("    humid24_hi : " + ROOM_ID_STATx.humid24_hi + vDay)
-    }
-    if((ROOM_ID_STATx.humid24_low > TempHumid.humid)||(ROOM_ID_STATx.humid24_low === 100)){
-        ROOM_ID_STATx.humid24_low = TempHumid.humid
-        console.log("    humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
-    }
-}
+// function CFG_save_DHT( TempHumid ){
+//     let moment
+//     let vDay = ''
+//     const STAT_saver = require('./STAT_save')
+//     moment = require('moment')
+//     ROOM_ID_STATx.humid_now = TempHumid.humid
+//     ROOM_ID_STATx.temp_now = TempHumid.temp
+//
+//     if (ROOM_ID_STATx.temp_humid_day < moment().format('DDD')){    // roll-over increment to next day
+//         ROOM_ID_STATx.temp_humid_day = Number(moment().format('DDD'))
+//         console.log(   "temp_humid_day : " + ROOM_ID_STATx.temp_humid_day + ' (saved)')
+//         STAT_saver(1)   // save immediate
+//         ROOM_ID_STATx.temp24_hi = TempHumid.temp        // re-set value overnight
+//         ROOM_ID_STATx.temp24_low = TempHumid.temp
+//         ROOM_ID_STATx.humid24_hi = TempHumid.humid
+//         ROOM_ID_STATx.humid24_low = TempHumid.humid
+//     }
+//     vDay = " ("+ ROOM_ID_STATx.temp_humid_day+")"
+//     if((ROOM_ID_STATx.temp24_hi < TempHumid.temp)||(ROOM_ID_STATx.temp24_hi === 10)){
+//         ROOM_ID_STATx.temp24_hi = TempHumid.temp
+//         console.log(    "temp24_hi : " + ROOM_ID_STATx.temp24_hi + vDay)
+//     }
+//     if((ROOM_ID_STATx.temp24_low > TempHumid.temp)||(ROOM_ID_STATx.temp24_low === 10)){
+//         ROOM_ID_STATx.temp24_low = TempHumid.temp
+//         console.log("    temp24_low : " + ROOM_ID_STATx.temp24_low + vDay)
+//     }
+//     if((ROOM_ID_STATx.humid24_hi < TempHumid.humid)||(ROOM_ID_STATx.humid24_hi === 100)){
+//         ROOM_ID_STATx.humid24_hi = TempHumid.humid
+//         console.log("    humid24_hi : " + ROOM_ID_STATx.humid24_hi + vDay)
+//     }
+//     if((ROOM_ID_STATx.humid24_low > TempHumid.humid)||(ROOM_ID_STATx.humid24_low === 100)){
+//         ROOM_ID_STATx.humid24_low = TempHumid.humid
+//         console.log("    humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
+//     }
+// }

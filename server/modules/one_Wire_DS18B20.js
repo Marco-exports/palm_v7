@@ -12,14 +12,16 @@ module.exports = function(io) {
       const getDS18AndEmit = async socket => {
          sensorF.readSimpleF(1, (err, temp) => {
             if (err) { console.log( err ) } else {
-               console.log('           One_Wire :    -->   ' + temp + ' F')}
+               if(global.OneWire !== temp){
+                  console.log('   One_Wire :  ' + temp + 'º F')
+               }
+               global.OneWire = temp
+            }
 
-            socket.emit("DS18_API", temp + ' F')            // --> send to screen
-            socket.broadcast.emit("DS18_API", temp + ' F')   // broadcast to other clients
+            socket.emit("DS18_API", temp + 'º F')            //  screen
+            socket.broadcast.emit("DS18_API", temp + 'º F')   // broadcast
          })
       }
    }
 }
-
-
-// One_Wire : [' + sensorF.list()+']   ' + temp + ' F')}
+// global.OneWire = ""

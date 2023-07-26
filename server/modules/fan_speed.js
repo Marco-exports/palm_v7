@@ -36,8 +36,6 @@ module.exports = (io) => {
 
             console.log('FAN_SPEED : '+ newFanSpeed + ' : ' + fanControl + fanControl_BIT)
 
-
-
             global.SABIANA.pwmWrite(fanControl_BIT >>0)
 
         } else {console.log(" Darwin : NO FANs")}

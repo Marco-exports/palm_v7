@@ -20,13 +20,12 @@ exports.GpioToPin = (inputArray) => {
       //console.log(BankRead.substr((i-1), 1))
       BankPinOut = [...BankPins + '']
 
-      if(global.windows !== BankRead){
-        // console.log(" --> " + BankRead + ' : ' + [...BankPins + ''])
+      if( global.windows !== BankRead.substring(4, 13) ){
          console.log( BankRead.substring(4, 13) )
       }
       global.windows = BankRead.substring(4, 13)
    }
-   return (BankPinOut)
+   return (BankPinOut)  // 000000001
 }
 
 

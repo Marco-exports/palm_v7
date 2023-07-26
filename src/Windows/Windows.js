@@ -8,8 +8,7 @@ const socket = socketIOClient()
 class WindowsOpen extends React.Component {
     constructor() {
         super()
-        this.state = {
-           windows : []
+        this.state = { windows : []
         }
     }
     componentDidMount() {
@@ -19,10 +18,12 @@ class WindowsOpen extends React.Component {
 
     render() {
        let res = _.sortBy(this.state.windows, ['order'])   // sort by "order"
-       res = res.filter(x => x.open !== 0)      // only if --> "state" = 1
+       res = res.filter(x => x.state !== 0)      // only if --> "state" = 1
        res = _.slice(res,0,4)       // display max --> 4 windows
 
-       console.log(res)
+        console.log( res.filter(x => x.state === 0) )     // only if "state" = 1)
+
+        console.log(res)
 
        return(
           <div className="windows-container">
@@ -31,7 +32,7 @@ class WindowsOpen extends React.Component {
                    <li className="window-li" key={item._id}>
                       <img className="window-icon" src={Window_open} alt="!"/>
                       <div className="window-name">{item.window}</div>
-                      <div className="window-open">{item.open}</div>
+                      <div className="window-open">{item.state}</div>
                    </li>)
                 }
              </ul>

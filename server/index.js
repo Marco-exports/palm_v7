@@ -7,9 +7,9 @@ if (process.platform==='linux') {
    pigpio.initialize() // pigpio C library initialized here
    pigpio.configureClock(5, pigpio.CLOCK_PWM)   // lowest CPU usage x
 }
-console.log(' Node -v : ' + process.version)     // node -v == v12.22.4
-const config_files = require('./config')   // ROOM --> './CFG_ROOM'
-console.log(config_files)     //  -->  "ROOM_Id : CFG_PC601_STUDY"
+console.log(' Node -v : ' + process.version)    // node -v == v12.22.4
+const config_files = require('./config')    // ROOM --> './CFG_ROOM'
+console.log( config_files )                     // {room_ID : "PC601_STUDY"}
 const port = process.env.PORT || 8080
 
 // **** **** **** **** **** **** v7 **** **** **** **** **** **** **** //
@@ -43,24 +43,26 @@ app.get('/QRQRQ', function (req, res) {
    console.log(    "QRQRQ : " + ROOM.room_ID)}
 )
 
-global.windows = ""   // initialize repeat var
+global.windows = ""   // initialize repeat vars
+global.OneWire = ""
 global.indoorTemp = ""
 global.OUTDOOR = 0
 
-require('./modules/gpioBankRead')(io)
+// require('./modules/gpioBankRead')(io)
 require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
 require('./modules/indoor')(io)
 require('./modules/windows')(io)     // send ROOM_WIN
-require('./modules/motion_PIR')(io)
 require('./modules/one_Wire_DS18B20')(io)
 require('./modules/backlight')(io)
 require('./modules/outdoor')(io)
 require('./modules/outdoor_file')(io)
+// require('./modules/motion_PIR')(io) -> PIR not used
 
 console.log(' Memory usage: ')
-console.log( process.memoryUsage() )
+console.log(process.memoryUsage())
+
 const IP_address = require('os').networkInterfaces()
 console.log(' IP: ' + IP_address.wlan0[0].address )
 // console.dir(IP_address, { depth: null })
@@ -73,19 +75,20 @@ if(process.platform==='linux') {
    let dutyCycle = 0
    // WATER.pwmFrequency(2000)
    SABIANA.pwmFrequency(2000)
-   console.log("starting GPIO 18 : " +SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
+   console.log("starting GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
 
-   if(dutyCycle > 10000000){
-      setInterval(() => {
-         // WATER.pwmWrite(dutyCycle)
-         SABIANA.pwmWrite(dutyCycle)
-         console.log(" SABIANA : " + dutyCycle)
-         dutyCycle += 15
-         if (dutyCycle > 255) { dutyCycle = 0 }
-      }, 20000)}    // n-seconds
+  // if(dutyCycle > 10000000){
+   //       setInterval(() => {
+   //          // WATER.pwmWrite(dutyCycle)
+   //          SABIANA.pwmWrite(dutyCycle)
+   //          console.log(" SABIANA : " + dutyCycle)
+   //          dutyCycle += 15
+   //          if (dutyCycle > 255) { dutyCycle = 0 }
+   //       }, 20000)
+   //    }    // n-seconds
 }
 
-//  require('./child_processes/lsExec')
+// require('./child_processes/lsExec')
 // require('./child_processes/lsSpawn.js')
 // require('./child_processes/listFiles')
 // var exec = require('child_process').exec;

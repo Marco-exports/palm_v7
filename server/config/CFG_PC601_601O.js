@@ -53,4 +53,4 @@ module.exports = {
             message: "Left door"
         }
     ]
-};
+}

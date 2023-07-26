@@ -1,5 +1,4 @@
 // FOR EACH Rpi ROOM ASSIGN CONFIG file...
-
 module.exports = {room_ID : "PC601_STUDY"}
 
 // module.exports = {room_ID : "PC601_LIVING"}

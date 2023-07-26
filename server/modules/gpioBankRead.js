@@ -1,12 +1,12 @@
-const _ = require("lodash")
+// const _ = require("lodash")
 module.exports = function(io) {
     if (process.platform === 'linux') {
-        const _ = require("lodash")
-        const moment = require('moment')
-        const pigpio = require('pigpio')
+        const _= require("lodash")
+        const moment= require('moment')
+        const pigpio= require('pigpio')
         const GpioBank = pigpio.GpioBank
-        let myBank = new GpioBank()
-        const GpioPin = []
+        let myBank= new GpioBank()
+        const GpioPin= []
         GpioPin[0] = ["W1", 17, 6]      // BANK-1
         GpioPin[1] = ["W2", 22, 5]
         GpioPin[2] = ["W3", 23, 12]
@@ -71,29 +71,13 @@ module.exports = function(io) {
             if( consoleRepeat !== BankData ){
                 consoleRepeat = BankData
             }
-            // delayArray[0]._id    // delayArray = [ 40, 30, 20 ]
 
             socket.broadcast.emit("GpioBank", BankData)
 
-          // console.log("gpioBankRead___GpioBank", BankData)
+          // console.log("gpioBankRead_GpioBank", BankData)
 
             //  console.log("GpioBank", BankData)
             // [ WX:00 W1:1 W2:1 W3:1 W4:1 W5:0 PIR:1 DAY:0 DT: 19:11:40 ]  -> "W1":1,"W2":1,"W3":1,"W4"
         }
     }
 }
-
-// const pad = function(a,b){ return ([1e15] + a).slice(-b)}  // pad(num,count) return number w/ leading zeros
-//   windows: [
-//       {_id:'W1',Gpio:17,'order':1, window:'Side Window',open:0,delay:40,state:1 },
-//       {_id:'W2',Gpio:23,'order':2, window:'Right Window',open:0,delay:30,state:1 },
-//       {_id:'W3',Gpio:24,'order':3, window:'Left Window',open:0,delay:30,state:1 },
-//       {_id:'W4',Gpio:24,'order':4, window:'Left Window',open:0,delay:30,state:1 },
-//  ***  _idArray  ***
-//  [
-//   'W', '1', ':', '1', ',',
-//   ' ', 'W', '2', ':', '1',
-//   ',', ' ', 'W', '3', ':',
-//   '1', ',', ' ', 'W', '4',
-//   ':', '1'
-//  ]
