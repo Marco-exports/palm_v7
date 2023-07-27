@@ -76,28 +76,21 @@ if(process.platform==='linux') {
    // WATER.pwmFrequency(2000)
    SABIANA.pwmFrequency(2000)
    console.log("starting GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
-
-  // if(dutyCycle > 10000000){
-   //       setInterval(() => {
-   //          // WATER.pwmWrite(dutyCycle)
-   //          SABIANA.pwmWrite(dutyCycle)
-   //          console.log(" SABIANA : " + dutyCycle)
-   //          dutyCycle += 15
-   //          if (dutyCycle > 255) { dutyCycle = 0 }
-   //       }, 20000)
-   //    }    // n-seconds
 }
 
-// require('./child_processes/lsExec')
-// require('./child_processes/lsSpawn.js')
-// require('./child_processes/listFiles')
-// var exec = require('child_process').exec;
-
-console.log(" Touch Screen event: "+ ROOM_ID.TOUCH_SCREEN)
-
+console.log(" Touch Screen: "+ ROOM_ID.TOUCH_SCREEN)
 var exec = require('child_process').exec
 exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)
-
 // ****  TIMEOUT ****
 // -- PLAY = event0
 // -- STUDY = event3
+
+// if(dutyCycle > 10000000){
+//       setInterval(() => {
+//          // WATER.pwmWrite(dutyCycle)
+//          SABIANA.pwmWrite(dutyCycle)
+//          console.log(" SABIANA : " + dutyCycle)
+//          dutyCycle += 15
+//          if (dutyCycle > 255) { dutyCycle = 0 }
+//       }, 20000)
+//    }    // n-seconds
