@@ -6,20 +6,20 @@ module.exports = function(io) {
       io.on("connection", socket => {
          socket.on('Get_DS18', function (data) {getDS18AndEmit(socket)})
          if (interval) {clearInterval(interval)}
-         interval = setInterval(() => getDS18AndEmit(socket), 240000)  // millisec = 4 min
+         interval = setInterval(() => getDS18AndEmit(socket), 120000)  // millisec = 2 min
       })
 
       const getDS18AndEmit = async socket => {
          sensorF.readSimpleF(1, (err, temp) => {
             if (err) { console.log( err ) } else {
-               if(global.OneWire !== temp){
-                  console.log('   One_Wire :  ' + temp + 'º F')
+               if(global.OneWire !== Math.round(temp)){
+                  console.log('   One_Wire :  ' + Math.round(temp) + 'º F')   // print if temp changed
                }
-               global.OneWire = temp
+               global.OneWire = Math.round(temp)
             }
 
-            socket.emit("DS18_API", temp + 'º F')            //  screen
-            socket.broadcast.emit("DS18_API", temp + 'º F')   // broadcast
+            socket.emit("DS18_API", Math.round(temp) + 'º F')            //  screen
+            socket.broadcast.emit("DS18_API", Math.round(temp) + 'º F')   // broadcast
          })
       }
    }

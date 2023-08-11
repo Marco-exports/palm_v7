@@ -1,4 +1,3 @@
-// const STAT_saver = require("./STAT_save");
 module.exports = io => {
     let interval
     let temp_humid = {temp : 10, humid : 88}    // temporary
@@ -25,9 +24,10 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
                 if(global.indoorTemp !== JSON.stringify(temp_humid)){
-                    console.log("  INDOOR: ",  JSON.stringify(temp_humid))   // << 99% humidity
+                   // console.log("  INDOOR: ",  JSON.stringify(temp_humid))   // << 99% humidity
+                    console.log("  INDOOR:  " + temp_humid.humid +' %   '+ temp_humid.temp + 'º F')
                 }
-                global.indoorTemp = JSON.stringify(temp_humid)
+                global.indoorTemp = JSON.stringify(temp_humid)      // {"humid":33,"temp":74}
 
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
@@ -35,7 +35,6 @@ module.exports = io => {
           //  var backlight = require('rpi-backlight')
            // console.log("BRIGHTNESS "+ await backlight.getBrightness())
         }
-
 
     }else{
         io.on("connection", socket => {
@@ -48,8 +47,6 @@ module.exports = io => {
     }
 }
 
-    // const moment = require('moment')
-    // moment().format("lll")
 
 function round(value, step) {    //round(2.74,0.25)=2.75 // round(2.74,0.5)=2.5 // round(2.74,1.0)=3.0
     step || (step = 1.0)
@@ -60,40 +57,3 @@ function round(value, step) {    //round(2.74,0.25)=2.75 // round(2.74,0.5)=2.5 
 function C_to_F (value){
     return Math.round((value*1.8)+32+ROOM_ID.temp_calibrate)     // calibrate DHT
 }
-
-
-// function CFG_save_DHT( TempHumid ){
-//     let moment
-//     let vDay = ''
-//     const STAT_saver = require('./STAT_save')
-//     moment = require('moment')
-//     ROOM_ID_STATx.humid_now = TempHumid.humid
-//     ROOM_ID_STATx.temp_now = TempHumid.temp
-//
-//     if (ROOM_ID_STATx.temp_humid_day < moment().format('DDD')){    // roll-over increment to next day
-//         ROOM_ID_STATx.temp_humid_day = Number(moment().format('DDD'))
-//         console.log(   "temp_humid_day : " + ROOM_ID_STATx.temp_humid_day + ' (saved)')
-//         STAT_saver(1)   // save immediate
-//         ROOM_ID_STATx.temp24_hi = TempHumid.temp        // re-set value overnight
-//         ROOM_ID_STATx.temp24_low = TempHumid.temp
-//         ROOM_ID_STATx.humid24_hi = TempHumid.humid
-//         ROOM_ID_STATx.humid24_low = TempHumid.humid
-//     }
-//     vDay = " ("+ ROOM_ID_STATx.temp_humid_day+")"
-//     if((ROOM_ID_STATx.temp24_hi < TempHumid.temp)||(ROOM_ID_STATx.temp24_hi === 10)){
-//         ROOM_ID_STATx.temp24_hi = TempHumid.temp
-//         console.log(    "temp24_hi : " + ROOM_ID_STATx.temp24_hi + vDay)
-//     }
-//     if((ROOM_ID_STATx.temp24_low > TempHumid.temp)||(ROOM_ID_STATx.temp24_low === 10)){
-//         ROOM_ID_STATx.temp24_low = TempHumid.temp
-//         console.log("    temp24_low : " + ROOM_ID_STATx.temp24_low + vDay)
-//     }
-//     if((ROOM_ID_STATx.humid24_hi < TempHumid.humid)||(ROOM_ID_STATx.humid24_hi === 100)){
-//         ROOM_ID_STATx.humid24_hi = TempHumid.humid
-//         console.log("    humid24_hi : " + ROOM_ID_STATx.humid24_hi + vDay)
-//     }
-//     if((ROOM_ID_STATx.humid24_low > TempHumid.humid)||(ROOM_ID_STATx.humid24_low === 100)){
-//         ROOM_ID_STATx.humid24_low = TempHumid.humid
-//         console.log("    humid24_low : " + ROOM_ID_STATx.humid24_low + vDay)
-//     }
-// }

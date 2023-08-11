@@ -7,7 +7,6 @@
   "PIR_last_seen": 0,
   "delay_remain": 0,
   "chill_open": 0,
-  "temp_humid_day": "189",
   "temp_now": 76,
   "humid_now": 43,
   "temp24_hi": 77,
@@ -19,47 +18,28 @@
   "windows": [
     {
       "_id": "side_17",
-      "order": 1,
-      "window": "Side window 17",
-      "RPi_GPIO": 17,
-      "state": 1,
-      "open": 1,
-      "ct_open": 2,
-      "time_open": 0,
-      "DT_open": 0
-    },
-    {
-      "_id": "side",
-      "order": 3,
-      "window": "Side window",
-      "RPi_GPIO": 22,
-      "state": 1,
-      "open": 0,
-      "ct_open": 2,
-      "time_open": 0,
-      "DT_open": 0
-    },
-    {
-      "_id": "left",
-      "order": 2,
-      "window": "Left front window",
-      "RPi_GPIO": 23,
-      "state": 1,
-      "open": 1,
-      "ct_open": 6,
-      "time_open": 0,
-      "DT_open": 0
-    },
-    {
-      "_id": "right",
       "order": 4,
-      "window": "Right front window",
-      "RPi_GPIO": 24,
       "state": 1,
-      "open": 0,
-      "ct_open": 12,
-      "time_open": 0,
-      "DT_open": 0
+      "online":1,
+      "window": "Side window"
+    },{
+      "_id": "side",
+      "order": 2,
+      "state": 0,
+      "online":1,
+      "window": "Side window"
+    },{
+      "_id": "left",
+      "order": 1,
+      "state": 1,
+      "online":0,
+      "window": "Left front"
+    },{
+      "_id": "right",
+      "order": 3,
+      "state": 1,
+      "online":1,
+      "window": "Right front"
     }
   ]
 }

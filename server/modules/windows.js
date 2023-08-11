@@ -10,7 +10,7 @@ module.exports = function(io) {
             socket.on('GetWindows', function (data) {getWindowsAndEmit(socket)})
 
             if (interval) {clearInterval(interval)}
-            interval = setInterval(() => getWindowsAndEmit(socket),120000)  // 2 minutes
+            interval = setInterval(() => getWindowsAndEmit(socket),60000)  // 1 minutes
         })
 
         const getWindowsAndEmit = async socket => {
@@ -20,7 +20,7 @@ module.exports = function(io) {
                 ROOM_ID_STAT.windows[i].state = Number(GpioPins[i])
             }
             try {
-                let Windows = (ROOM_ID_STAT.windows)                       // JSON.stringify
+                let Windows = (ROOM_ID_STAT.windows)             // JSON.stringify
                 
                 socket.emit("Windows_API", Windows)             // --> send to screen
                 socket.broadcast.emit("Windows_API", Windows)   // --> send to screen

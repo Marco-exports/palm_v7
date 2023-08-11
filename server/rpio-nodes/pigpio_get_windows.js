@@ -23,7 +23,6 @@ window_1.on('interrupt', (level) => {console.log("WINDOW gpio --> open: 17 : " +
 //const window_4 = new Gpio(24, { mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
 //window_4.on('interrupt', (level) => {console.log("WINDOW gpio --> open: 24 : " + level)});
 
-
 const cars = ["22", "23", "24"];
 cars[0] = new Gpio(22, { mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
 cars[0].on('interrupt', (level) => {console.log("WINDOW gpio --> open: 23 : " + level )});

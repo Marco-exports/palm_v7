@@ -1,5 +1,4 @@
-
-const pigpio = require('pigpio');
+const pigpio= require('pigpio');
 const Gpio = pigpio.Gpio;
 const eventEmitter = require('events').EventEmitter;
 

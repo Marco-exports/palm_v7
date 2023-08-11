@@ -14,7 +14,7 @@ module.exports = function( saveImmediate ) {
 }
 
 function STAT_saver() {
-    console.log('try to get JSON saved...' +ROOM.room_ID )  // STAT_PC601_STUDY.json
+    console.log('JSON saved...' +ROOM.room_ID )  // STAT_PC601_STUDY.json
       const fs = require('fs')
       fs.writeFile('./server/config/STAT_' + ROOM.room_ID+'.json',
          JSON.stringify(ROOM_ID_STAT, null, 2),

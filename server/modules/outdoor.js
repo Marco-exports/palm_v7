@@ -4,7 +4,6 @@ module.exports = function(io) {
 
     io.on("connection", function (socket) {
         socket.on('GetOutdoor', function () {
-            // console.log(' GetOutdoor ...')
             getOutdoorAndEmit(socket)
         })
 
