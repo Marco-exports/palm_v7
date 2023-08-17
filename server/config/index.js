@@ -15,8 +15,6 @@ console.log(' FAN_SPEED : ' + ROOM_ID.fan_speed)
 global.JSON_SAVED = moment().unix()            // only on start-up
 
 
-
-
 if(null)
 fs.access(ROOM_ID_LOG, fs.F_OK, (err) => {
      if (err) {  // file not found...

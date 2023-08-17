@@ -78,7 +78,7 @@ if(process.platform==='linux') {
    console.log("starting GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
 }
 
-console.log(" Touch Screen: "+ ROOM_ID.TOUCH_SCREEN)
+console.log(" Touch Screen: " + ROOM_ID.TOUCH_SCREEN)
 var exec = require('child_process').exec
 exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)
 // ****  TIMEOUT ****

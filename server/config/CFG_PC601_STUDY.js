@@ -1,7 +1,7 @@
 module.exports = {
     _id: "CFG_PC601_STUDY",
     name: "Palm Cay 601 STUDY",  // pre-set conditions for room...
-    TOUCH_SCREEN: "event3",
+    TOUCH_SCREEN: "event0",
     DHT_GPIO_1: 5,          // primary DHT
     DHT_GPIO_2: 999,        // secondary DHT
     DS18_GPIO: 4,           // DS18BO020 -> one wire TEMP
