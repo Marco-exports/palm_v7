@@ -1,6 +1,6 @@
 module.exports = function(io) {
     let interval   // fetch weather every: hour = 3600000  / 30 min = 1800000 /  10 min = 600000
-    getOUTSIDE().then(r => {console.log("init Outdoor")})   // START
+    getOUTSIDE().then(r => {console.log("Init OUTDOOR")})   // START
 
     //  run every hour
     if(interval){ clearInterval(interval) }

@@ -24,7 +24,6 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
                 if(global.indoorTemp !== JSON.stringify(temp_humid)){
-                  //  console.log("  INDOOR:  " + temp_humid.humid +' %   '+ temp_humid.temp + 'º F')
                     console.log("  INDOOR: " + temp_humid.temp + 'º F')
                 }
                 global.indoorTemp = JSON.stringify(temp_humid)      // {"humid":33,"temp":74}
