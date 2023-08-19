@@ -15,7 +15,7 @@ class ConfigRoom extends Component {
         document.title = this.state.result
         return (
             <div className="config_room">
-                <div>{ this.state.result}</div>
+                <div>ROOM :  { this.state.result}</div>
             </div>
         )
     }

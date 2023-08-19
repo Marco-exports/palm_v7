@@ -23,8 +23,8 @@ ul{
 .window-icon {
     position: relative;
     border-radius: 0;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 .window-name{
     position: relative;
@@ -32,7 +32,7 @@ ul{
     left: 50px;
     top: -35px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     color: var(--primaryText);
 }
 .window-open {

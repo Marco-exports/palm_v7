@@ -78,7 +78,7 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 320px 280px 220px;
+  grid-template-columns: 320px 250px 220px;
   grid-template-areas: "outdoor" "indoor" "set_temp";
   border: 0px solid var(--border);
 }
@@ -95,10 +95,10 @@ body {
 .indoor {
   display: grid;
   margin-top: 25px;
-  grid-template-columns: 3200px ;
-  grid-template-rows: 50px 170px 30px 350px;
+  grid-template-columns: 250px ;
+  grid-template-rows: 50px 170px 30px 200px;
   grid-template-areas: "indoor_label" "temp_indoor" "humidity" "windows";
-  border: 1px solid var(--border);
+  border: 1px solid #020d95 var(--border);
 }
 
 .set_temp {
