@@ -10,12 +10,13 @@ module.exports = function(io) {
             socket.on('GetWindows', function (data) {getWindowsAndEmit(socket)})
 
             if (interval) {clearInterval(interval)}
-            interval = setInterval(() => getWindowsAndEmit(socket),60000)  // 1 minutes
+            interval = setInterval(() => getWindowsAndEmit(socket),60000)  // 1 minute
         })
 
         const getWindowsAndEmit = async socket => {
             let GpioPins = GpioToPin(RP_IOs)
            // console.log('  --> GpioPins: ' + GpioPins)   // [ '1', '0', '1', '0' ]
+            let i = 0
             for (i = 0; i < num_windows; ++i) {
                 ROOM_ID_STAT.windows[i].state = Number(GpioPins[i])
             }

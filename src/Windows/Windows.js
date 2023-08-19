@@ -21,7 +21,7 @@ class WindowsOpen extends React.Component {
        res = res.filter(x => x.state !== 0)      // only if --> "state" = 1
        res = _.slice(res,0,4)       // display max --> 4 windows
 
-        console.log( res.filter(x => x.state === 0) )     // only if "state" = 1)
+       // console.log( res.filter(x => x.state === 0) )     // only if "state" = 1)
 
         console.log(res)
 

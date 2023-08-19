@@ -13,7 +13,7 @@ module.exports = function(io) {
          sensorF.readSimpleF(1, (err, temp) => {
             if (err) { console.log( err ) } else {
                if(global.OneWire !== Math.round(temp)){
-                  console.log('   One_Wire:  ' + Math.round(temp) + 'º F')   // print if temp changed
+                  console.log('  SABIANA: ' + Math.round(temp) + 'º F')   // print if temp changed
                }
                global.OneWire = Math.round(temp)
             }

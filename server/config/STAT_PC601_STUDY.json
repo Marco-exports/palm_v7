@@ -15,6 +15,7 @@
   "humid24_low": 0,
   "tempSet": 80,
   "fanSet": 5,
+
   "windows": [
     {
       "_id": "side_17",
@@ -41,5 +42,14 @@
       "online":1,
       "window": "Right front"
     }
+  ],
+  "test": [
+    {_id: 'left', order: 1, state: null, online: 0, window: 'Left front'},
+    {_id: 'side', order: 2, state: null, online: 1, window: 'Side window'},
+    {_id: 'right', order: 3, state: null, online: 1, window: 'Right front'},
+    {_id: 'side_17', order: 4, state: null, online: 1, window: 'Side window'},
   ]
 }
+
+
+

@@ -60,9 +60,8 @@ require('./modules/outdoor')(io)
 require('./modules/outdoor_file')(io)
 // require('./modules/motion_PIR')(io) -> PIR not used
 
-console.log(' Memory usage: ')
-console.log(process.memoryUsage())
-
+// console.log(' Memory usage: ')
+// console.log(process.memoryUsage())
 const IP_address = require('os').networkInterfaces()
 console.log(' IP: ' + IP_address.wlan0[0].address )
 // console.dir(IP_address, { depth: null })
@@ -72,7 +71,7 @@ if(process.platform==='linux') {
    const Gpio = pigpio.Gpio
    // const WATER = new Gpio(12, {mode: Gpio.OUTPUT})    // alt = 13 / 12
    const SABIANA = new Gpio(18, {mode: Gpio.OUTPUT})   // alt = 19 / 18
-   let dutyCycle = 0
+   // let dutyCycle = 0
    // WATER.pwmFrequency(2000)
    SABIANA.pwmFrequency(2000)
    console.log("starting GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()

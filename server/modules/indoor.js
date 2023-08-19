@@ -1,20 +1,21 @@
 module.exports = io => {
     let interval
-    let temp_humid = {temp : 10, humid : 88}    // temporary
+    let temp_humid = {temp : 10, humid : 88}    // temp
     console.log(' Init INDOOR' )
     if (process.platform === 'linux') {
         const dht = require('../rpio-nodes/pigpio_DHT')
         const Gpio = 5
         const sensor = dht(Gpio,22)
-        setInterval(()=>{sensor.read()},60000)  // every 60 seconds
+
+        setInterval(()=>{sensor.read()},40000)  // every 40 seconds
         sensor.on('result', data => {
             temp_humid = {
-                humid : round(data.humidity,1.0),
-                temp : C_to_F(data.temperature)
+                temp : C_to_F(data.temperature),
+                humid : round(data.humidity,1.0)
             }
            // CFG_save_DHT( temp_humid )   // store statistics
         })
-        sensor.on('badChecksum', () => { console.log('  INDOOR : checksum') })
+        sensor.on('badChecksum', () => { console.log('  INDOOR checksum') })
 
         io.on("connection", ( socket ) => {
             socket.on('GetIndoor',  data => {getTempHumidAndEmit(socket)})
@@ -23,10 +24,10 @@ module.exports = io => {
         })
 
         const getTempHumidAndEmit = async socket =>{
-                if(global.indoorTemp !== JSON.stringify(temp_humid)){
-                    console.log("  INDOOR: " + temp_humid.temp + 'º F')
+                if(global.indoorTemp !== temp_humid.temp){
+                    console.log("  SABIANA: " + temp_humid.temp + 'º F')
                 }
-                global.indoorTemp = JSON.stringify(temp_humid)      // {"humid":33,"temp":74}
+                global.indoorTemp = temp_humid.temp      // {"humid":33,"temp":74}
 
                 socket.emit("Indoor_API", temp_humid)   // send to screen
                 socket.broadcast.emit("Indoor_API", temp_humid)   // other screens
