@@ -1,11 +1,10 @@
 module.exports = function(io) {
-    const axios = require('axios')
+   // const axios = require('axios')
    const moment = require('moment')
    let interval   // interval for data (2 seconds)
 
     io.on("connection", socket => {
        // socket.on("disconnect", () => {console.log(`drop < RPI_REPEAT >`)})
-
         if(interval){ clearInterval(interval)}
         interval = setInterval(() => getRPi_updates(socket),120000)  // millisec = 2 minutes
 
