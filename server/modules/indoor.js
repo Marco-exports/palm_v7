@@ -1,4 +1,4 @@
-module.exports = io => {
+module.exports = (io) => {
     let interval
     let temp_humid = {temp : 10, humid : 88}    // temp
     console.log(' Init INDOOR' )
@@ -7,7 +7,7 @@ module.exports = io => {
         const Gpio = 5
         const sensor = dht(Gpio,22)
 
-        setInterval(()=>{sensor.read()},40000)  // every 40 seconds
+        setInterval(()=>{sensor.read()},60000)  // every 60 seconds
         sensor.on('result', data => {
             temp_humid = {
                 temp : C_to_F(data.temperature),
@@ -25,7 +25,7 @@ module.exports = io => {
 
         const getTempHumidAndEmit = async socket =>{
                 if(global.indoorTemp !== temp_humid.temp){
-                    console.log("  SABIANA: " + temp_humid.temp + 'º F')
+                    console.log("  Indoor: " + temp_humid.temp + 'º F')
                 }
                 global.indoorTemp = temp_humid.temp      // {"humid":33,"temp":74}
 

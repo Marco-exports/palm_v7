@@ -24,7 +24,7 @@ const cors = require('cors')
 app.use(cors())
 const server = http.createServer(app)    // HTTP server
 const io = require('socket.io')(server, {pingTimeout: 60000 }) // io server
-server.listen(port,() => console.log(` Node on port :  ${port}`))
+server.listen(port,() => console.log(` Node on port : ${port}`))
 
 const { createProxyMiddleware } = require('http-proxy-middleware')
 // const {TOUCH_SCREEN} = require("./config/CFG_PC601_STUDY")
@@ -52,6 +52,7 @@ global.OUTDOOR = 0
 require('./modules/outdoor')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
+require('./modules/temp_fans')(io)
 require('./modules/indoor')(io)
 require('./modules/windows')(io)     // send ROOM_WIN
 require('./modules/one_Wire_DS18B20')(io)
@@ -74,10 +75,10 @@ if(process.platform==='linux') {
    // let dutyCycle = 0
    // WATER.pwmFrequency(2000)
    SABIANA.pwmFrequency(2000)
-   console.log("starting GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
+   console.log(" start GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
 }
 
-console.log(" Touch Screen: " + ROOM_ID.TOUCH_SCREEN)
+console.log(" Touch Screen : " + ROOM_ID.TOUCH_SCREEN)
 var exec = require('child_process').exec
 exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)
 // ****  TIMEOUT ****

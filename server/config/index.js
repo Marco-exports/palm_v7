@@ -16,13 +16,11 @@ global.JSON_SAVED = moment().unix()            // only on start-up
 
 
 if(null)
-fs.access(ROOM_ID_LOG, fs.F_OK, (err) => {
-     if (err) {  // file not found...
-          fs.appendFile(ROOM_ID_LOG, '...', function (err) {
-               if (err) throw err
-               console.log(' > Log file created : ' + ROOM_ID_LOG)
-          })
-     }
-})
-
-// console.log(' LAST_Touched : ' + JSON_SAVED)
+    fs.access(ROOM_ID_LOG, fs.F_OK, (err) => {
+        if (err) {  // file not found...
+            fs.appendFile(ROOM_ID_LOG, '...', function (err) {
+                if (err) throw err
+                console.log(' > Log file created : ' + ROOM_ID_LOG)
+            })
+        }
+    })

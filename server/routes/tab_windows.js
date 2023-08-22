@@ -1,27 +1,27 @@
-const express = require('express');
-const router = express.Router();
-const fs = require('fs');
-const _ = require('lodash');
+const express = require('express')
+const router = express.Router()
+const fs= require('fs')
+const _ = require('lodash')
 
-router.use(function(req, res, next) { next();});
+router.use(function(req, res, next) { next()})
 router.route('/Windows')      // load FAN SPEEDS...
    .get(function (req, res) {
-      let Windows = (ROOM_ID.windows);  // JSON.stringify
-      res.send( JSON.stringify(Windows)   );
-      console.log("TabsWindow request : " +  JSON.stringify(ROOM_ID.windows) );
+      let Windows = (ROOM_ID.windows)  // JSON.stringify
+      res.send( JSON.stringify(Windows) )
+      console.log("TabsWindow request : " + JSON.stringify(ROOM_ID.windows) )
    })
 
-   .post(function (req, res) { const objTxt = JSON.parse(JSON.stringify(req.body));
+   .post(function (req, res) { const objTxt = JSON.parse(JSON.stringify(req.body))
       res.end("SAVE Windows > ");
       [].forEach.call(objTxt, function(inst, i){
          [].forEach.call(Object.keys(inst),function(y){if(!isNaN(objTxt[i][y])) objTxt[i][y] = +objTxt[i][y]});
-      });
-       //console.log(objTxt);
+      })
+
       fs.readFile(process.cwd()+'/server/config/CFG_'+ROOM.room_ID+'.js',"utf8",function (err, data) {
          if (err) console.log(err)
          else
             MyText = data
-         MyText = MyText.slice(0, MyText.indexOf("windows: [")+9);
+         MyText = MyText.slice(0, MyText.indexOf("windows: [")+9)
        //  console.log(MyText + JSON.stringify(objTxt,null,4) + " }")
          fs.writeFile(process.cwd()+'/server/config/CFG_'+ROOM.room_ID+'.js',MyText + JSON.stringify(objTxt,null,4) + " }", function (err) {
             if (err) return console.log(err)
@@ -33,9 +33,9 @@ router.route('/Windows')      // load FAN SPEEDS...
                })
                fs.writeFile('./server/config/STAT_'+ROOM.room_ID+'.json', JSON.stringify(ROOM_ID_STATx, null, '\t'),
                   (err) => {
-                     if (err) throw err;
-                     console.log('JSON saved...(tab_windows) ' + infotab+']')
-                  });
+                     if (err) throw err
+                     console.log('saved...')
+                  })
              //  console.log(ROOM_ID_STATx.windows)
          })
       })

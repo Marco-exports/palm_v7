@@ -4,7 +4,7 @@ module.exports = {
     TOUCH_SCREEN: "event0",
     DHT_GPIO_1: 5,          // primary DHT
     DHT_GPIO_2: 999,        // secondary DHT
-    DS18_GPIO: 4,           // DS18BO020 -> one wire TEMP
+    DS18_GPIO: 4,           // DS18BO020 -> one-wire TEMP
     fan_GPIO: 12,           // SABIANA_FAN
     fan_speed: [0,10,8,15,30,40],  // * OFF-LINE * / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
     temp_calibrate: -0.5,  // +/- 0.75 F  calibration on DHT sensor
@@ -34,6 +34,7 @@ module.exports = {
         }
     ]
 }
+
 
 
 // PIR_GPIO: 6,         // PIR on GPIO 6
