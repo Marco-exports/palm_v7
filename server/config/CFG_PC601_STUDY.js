@@ -6,10 +6,10 @@ module.exports = {
     DHT_GPIO_2: 999,        // secondary DHT
     DS18_GPIO: 4,           // DS18BO020 -> one-wire TEMP
     fan_GPIO: 12,           // SABIANA_FAN
-    fan_speed: [0,10,8,15,30,40],  // * OFF-LINE * / AUTOMATIC / SOFT / BREEZE / MISTRAL / VIENTO
+    fan_speed: [0,10,8,15,30,40],  // * OFF-LINE * / AUTO / SOFT / BREEZE / MISTRAL / VIENTO
     temp_calibrate: -0.5,  // +/- 0.75 F  calibration on DHT sensor
-    cool_temp_max: 86,		// max cooling: 86 F
-    cool_temp_min: 66,		// min cooling: 66 F
+    cool_temp_max: 80,		// max cooling: 86 F
+    cool_temp_min: 65,		// min cooling: 66 F
 
     // -- -- --  WINDOWS:  -- -- -- //
     windows: [
@@ -25,12 +25,18 @@ module.exports = {
             "state": 0,
             "online":1,
             "window": "Front window L"
-        },{
+        }, {
             "_id": "front_right",
             "order": 2,
             "state": 1,
+            "online": 1,
+            "window": "Front window R",
+        },{
+            "_id": "XXX",
+            "order": 3,
+            "state": 1,
             "online":1,
-            "window": "Front window R"
+            "window": "XXX window R"
         }
     ]
 }

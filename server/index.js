@@ -44,25 +44,25 @@ app.get('/QRQRQ', function (req, res) {
 )
 
 global.windows = ""   // initialize repeat vars
+global.windows_OPEN = ""
 global.OneWire = ""
 global.indoorTemp = ""
 global.OUTDOOR = 0
 
-// require('./modules/gpioBankRead')(io)
-require('./modules/outdoor')(io)
+require('./modules/windows')(io)
 require('./modules/fan_speed')(io)
 require('./modules/temperature')(io)
-require('./modules/temp_fans')(io)
 require('./modules/indoor')(io)
-require('./modules/windows')(io)     // send ROOM_WIN
 require('./modules/one_Wire_DS18B20')(io)
 require('./modules/backlight')(io)
 require('./modules/outdoor')(io)
 require('./modules/outdoor_file')(io)
-// require('./modules/motion_PIR')(io) -> PIR not used
 
+// require('./modules/motion_PIR')(io) -> PIR not used
+// require('./modules/gpioBankRead')(io)
 // console.log(' Memory usage: ')
 // console.log(process.memoryUsage())
+
 const IP_address = require('os').networkInterfaces()
 console.log(' IP: ' + IP_address.wlan0[0].address )
 // console.dir(IP_address, { depth: null })

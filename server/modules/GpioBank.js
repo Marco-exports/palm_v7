@@ -14,23 +14,19 @@ exports.GpioToPin = (inputArray) => {
          }  // do not use '===' // input = 17 -> output = 6  // output->[6,5,12,7]
       }
       let BankPins = ""
-      for (const i of output) {
-         BankPins = BankPins + (BankRead.substr((i - 1), 1))
-      }
-      //console.log(BankRead.substr((i-1), 1))
+      for (const i of output) { BankPins = BankPins + (BankRead.substring((i - 1), 1)) }
       BankPinOut = [...BankPins + '']
 
-      if( global.windows !== BankRead.substring(4, 13) ){
-         console.log( BankRead.substring(4, 13) )
-      }
-      global.windows = BankRead.substring(4, 13)
+      if( global.windows !== BankRead.substring(4,13) )
+      // console.log('  GPIOBank ' + BankRead.substring(4,13))
+      global.windows = BankRead.substring(4,13)
    }
    return (BankPinOut)  // 000000001
 }
 
 
+
 // console.log("BANK1 -> "+ BankRead)
 // 10000110000101000000111111111   (total 30)
 // 10001000000101100000110111111   (PIR GPIO = 6:23)
-
 // WINDOW --> GPIO's == { 17,22,23,24 }  (PIR GPIO = 6:23) (LIGHT --> GPIO = 25:4)

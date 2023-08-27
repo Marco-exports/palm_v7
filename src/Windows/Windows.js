@@ -8,12 +8,12 @@ const socket = socketIOClient()
 class WindowsOpen extends React.Component {
     constructor() {
         super()
-        this.state = { windows : []
-        }
+        this.state = { windows : [] }
     }
+
     componentDidMount() {
         socket.on("Windows_API", data => { this.setState({ windows: data } ) })
-        socket.emit('GetWindows', {WINDOW: 'request'})  //  initial request for Windows data
+        socket.emit('GetWindows', {WINDOW: 'request'})  //  init request for Windows data
     }
 
     render() {

@@ -5,7 +5,7 @@ global.ROOM = require('./CFG_ROOM')  // -->> get ROOM : "PC601_STUDY"
 global.ROOM_ID = require('./CFG_' + ROOM.room_ID)
 global.ROOM_ID_STAT = require('./CFG_' + ROOM.room_ID)         // CFG --> replace to JSON version
 console.log(" ROOM_Id : " + ROOM_ID._id)
-console.log(' FAN_SPEED : ' + ROOM_ID.fan_speed)
+console.log(' FAN_SPEEDs : ' + ROOM_ID.fan_speed)
 
 // global.ROOM_ID_STATx = require('./CFG_' + ROOM.room_ID + '.json')
 // global.ROOM_ID_HIST = require('./HIST_' + ROOM.room_ID)
@@ -24,3 +24,6 @@ if(null)
             })
         }
     })
+
+
+// cat STAT_PC601_STUDY.json

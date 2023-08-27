@@ -3,6 +3,7 @@ module.exports = function(io) {
       let interval
       const moment = require('moment')
       const GpioToPin = require('./GpioBank').GpioToPin
+
       console.log(" Last PIR :" + ROOM_ID_STAT.PIR_last_seen)
       // const RP_PIR = [ROOM_ID.PIR_GPIO]      // Get PIR_GPIO number
 
