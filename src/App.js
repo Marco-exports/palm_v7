@@ -86,7 +86,7 @@ class App extends React.Component {
                            <MotionPIR/>
                            <OneWireTemp/>
                         </div>
-                        <div className="footer_right">footer_right...</div>
+                        <div className="footer_right">SABIANA ™</div>
                      </div>
                   </div>
                </div>

@@ -78,12 +78,15 @@ if(process.platform==='linux') {
    console.log(" start GPIO 18 : " + SABIANA.getPwmFrequency())   // WATER.getPwmFrequency()
 }
 
-console.log(" Touch Screen : " + ROOM_ID.TOUCH_SCREEN)
+console.log(" Touch Screen : " + ROOM_ID.TOUCH_SCREEN)   // event3
 var exec = require('child_process').exec
 exec('sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 ' + ROOM_ID.TOUCH_SCREEN)
 // ****  TIMEOUT ****
 // -- PLAY = event0
 // -- STUDY = event3
+// *** TEST WHICH event0  ===>>>
+// sudo /home/pi/pi-touchscreen-dimmer/timeout 8 12 event0
+
 
 
 // if(dutyCycle > 10000000){

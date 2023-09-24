@@ -24,3 +24,7 @@ class MotionPIR extends React.Component {
 export default MotionPIR
 
 // "response" means PIR detected
+
+// <div className="motion_PIR">
+//    PIR move : {response}
+// </div>

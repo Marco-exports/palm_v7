@@ -126,7 +126,7 @@ body {
 }
 .motion_PIR{
   margin-top: 4px;
-  color: var(--footerText);
+  color: var(--background-color);
 }
 .one_Wire_Temp{
   margin-top: 1px;
