@@ -38,10 +38,13 @@ app.use('/windows', require('./routes/tab_windows').router)
 
 app.get('/XXXXX', function (req, res) { res.send( ROOM.room_ID )})
 app.get('/ROOM_WIN', function (req, res) { res.send( ROOM_WIN )})
+
 app.get('/QRQRQ', function (req, res) {
-   res.sendFile(__dirname +'/QR_CODES/QR_'+ ROOM.room_ID +'.png')
-   console.log(    "QRQRQ : " + ROOM.room_ID)}
+   const QR_IP = IP_address.wlan0[0].address
+   res.sendFile(__dirname +'/QR_CODES/' + QR_IP +'.png')
+   console.log("  QRQRQ : " + QR_IP)}
 )
+// **  BASED ON QR GENERATOR -->>  https://zpao.github.io/qrcode.react/
 
 global.windows = ""   // initialize repeat vars
 global.windows_OPEN = ""

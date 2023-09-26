@@ -1,6 +1,7 @@
 module.exports = {
     _id: "CFG_PC601_STUDY",
     name: "Palm Cay 601 STUDY",  // pre-set conditions
+    // QR_CODE: '192.168.1.22.png',
     TOUCH_SCREEN: "event0",
     DHT_GPIO_1: 1,          // primary DHT
     DHT_GPIO_2: 999,        // secondary DHT

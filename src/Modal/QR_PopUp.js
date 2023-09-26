@@ -26,7 +26,7 @@ function QRcode(){
             <img src={'/QRQRQ'} alt="!" className='QR-image' onClick={closeModal}/>
          </Modal>
       </div>
-   );
+   )
 }
 export default QRcode
 
